@@ -207,8 +207,104 @@ namespace GrupoDePoblacion
         /// <param name="identificador_del_usuraio">El codigo unico del usuario</param>
         public void CargarCajasDeTexto(string identificador_del_usuraio)
         {
+            //Obtiene los datos necesarios para cargar el formulario
+            string[] Datos = CargarDatos();
+
+            // Desabilita las cajas de texto para que no puedan ser modificadas
             txt_nombre.Enabled = false;
             txt_apellido.Enabled = false;
+
+            if (Datos == null)
+            {
+                MessageBox.Show("Ha ocurrido un error, por favor intente más tarde.");
+            }
+            else
+            {
+
+            }
+        }
+
+        private string[] CargarDatos()
+        {
+            return null;
+        }
+
+        private Boolean EnviaraBasedeDatos( string grupodepoblacion, double imc)
+        {
+            string fecha = DateTime.Now.ToString();
+            usuario = "Juan";
+
+            // Direccion de la Base de Datos
+            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
+            ///    "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\\Users\\ASUS\\source\repos\\Mi primer loguin en CShart\\Mi primer loguin en CShart\\Clientes.mdb";
+            ///    "Provider = Microsoft.ACE.OLEDB.12.0;Data Source = d:\\ASUS\\Documentos\\Clientes.mdb; Persist Security Info=False;";
+
+            // crear una conexion con la base de datos
+            OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
+
+            // Iniciar la conexion con la base de datos
+            Conexion.Open();
+
+            // crear la consulta (Query)
+            string ConsultaQuery = "INSERT INTO Perfil "
+                + " (usuario, edad, peso, altura, leciones, [grupo sanguineo], enfermedades, discapacidades, [grupo de poblacion], imc, fecha)"
+                + " VALUES (@usuario, @edad, @peso, @altura, @leciones, @grupoSanguineo, @enfermedades,"
+                + " @discapacidades, @grupodepoblacion, @imc, @fecha)";
+
+            // crear un objecto comando para efectuar la consulta//*/
+            OleDbCommand Comando = new OleDbCommand(ConsultaQuery, Conexion);
+
+            Comando.Parameters.AddWithValue("@usuario",usuario);
+            Comando.Parameters.AddWithValue("@edad", edad);
+            Comando.Parameters.AddWithValue("@peso", peso);
+            Comando.Parameters.AddWithValue("@altura", altura);
+            Comando.Parameters.AddWithValue("@leciones", leciones);
+            Comando.Parameters.AddWithValue("@grupoSanguineo", grupoSanguineo);
+            Comando.Parameters.AddWithValue("@enfermedades", enfermedades);
+            Comando.Parameters.AddWithValue("@discapacidades", discapacidades);
+            Comando.Parameters.AddWithValue("@grupodepoblacion", grupodepoblacion);
+            Comando.Parameters.AddWithValue("@imc", imc);
+            Comando.Parameters.AddWithValue("@fecha", fecha);
+
+            //extra
+            switch (Comando.ExecuteNonQuery())
+            {
+                case 0:
+                    {
+                        if (usuario == null)
+                        {
+                            MessageBox.Show("Registro Falló.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualización de datos fallida.");
+                        }                        
+                        break;
+                    }
+                case 1:
+                    {
+                        if (usuario == null)
+                        {
+                            MessageBox.Show("Registro exitoso.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Actualización de datos exitosa.");
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        MessageBox.Show("Ha ocurrido un error inesperado porfavor intente mas tarde.");
+                        break;
+                    }                
+            }
+            
+            // Cerrar Conexion
+            Conexion.Close();
+
+            // Tomamos el resutado y con un if le mostramos un mensaje al usuario
+            return false;
         }
     }
 }
