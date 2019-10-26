@@ -15,7 +15,7 @@ namespace GrupoDePoblacion
     public partial class InicioDeSesion : Form
     {
         int contador = 0;
-        string[] Nuevos_Usuarios = new string[0];
+        string usuario = null;
         public InicioDeSesion()
         {
             InitializeComponent();
@@ -27,7 +27,8 @@ namespace GrupoDePoblacion
         }
         private void Btn_Registrarse_Click(object sender, EventArgs e)
         {
-            MostrarRegistrarUsuario(null);
+            this.usuario = null;
+            MostrarRegistrarUsuario();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace GrupoDePoblacion
 
         private void salirDeLaAplicacion()
         {
+            Hide();
             //Mensaje que pregunta si quiere o no salir de la aplicacion
             if (MessageBox.Show("¿Desea salir de la aplicación?", "Salir", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {//en caso verdadero
@@ -49,6 +51,10 @@ namespace GrupoDePoblacion
                 //Cerrar todos los formularios en proceso
                 Application.ExitThread();
                 Close();
+            }
+            else
+            {
+                Show();
             }
         }
 
@@ -77,8 +83,9 @@ namespace GrupoDePoblacion
                 validar =  ValidarUsuario(usuario, contrasena);
                 if (validar)
                 {
+                    this.usuario = usuario;
                     MessageBox.Show("Inicio de Sesión Sactisfactorio.");
-                    MostrarRegistrarUsuario(capturarUsuario(usuario));
+                    MostrarRegistrarUsuario();
                 }
                 else if (!validar && contador > 3)
                 {
@@ -91,11 +98,6 @@ namespace GrupoDePoblacion
                 }           
             }
             limpiarCajas();
-        }
-
-        private string capturarUsuario(string usuario)
-        {
-            return "";
         }
 
         /// <summary>
@@ -121,8 +123,6 @@ namespace GrupoDePoblacion
         {
             // Direccion de la Base de Datos
             string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
-            ///    "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = C:\\Users\\ASUS\\source\repos\\Mi primer loguin en CShart\\Mi primer loguin en CShart\\Clientes.mdb";
-            ///    "Provider = Microsoft.ACE.OLEDB.12.0;Data Source = d:\\ASUS\\Documentos\\Clientes.mdb; Persist Security Info=False;";
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -134,10 +134,14 @@ namespace GrupoDePoblacion
             String ConsultaQuery =
                 "SELECT        usuario, contrasena " +
                 "FROM Usuarios " +
-                "WHERE (usuario =  '" + usuario + "') AND (contrasena =  '" + contrasena + "')";//*/
+                "WHERE (usuario =  @usuario) AND (contrasena =  @contrasena)";//*/
 
             // crear un objecto comando para efectuar la consulta
             OleDbCommand Comando = new OleDbCommand(ConsultaQuery, Conexion);
+
+            // agregar entradas a la consulta
+            Comando.Parameters.AddWithValue("@usuario",usuario);
+            Comando.Parameters.AddWithValue("@contrasena",contrasena);
 
             // Variable de lectura de datos
             OleDbDataReader LectordeDatos;
@@ -150,16 +154,13 @@ namespace GrupoDePoblacion
 
             // Cerrar Conexion
             Conexion.Close();
+            LectordeDatos.Close();
 
-            // Tomamos el resutado y con un if le mostramos un mensaje al usuario
-            if (ExistenDatos)
-            {
-                return true;
-            }
-            return false;
+            // Devolvemos el resultado
+            return ExistenDatos;
         }
 
-        private void MostrarRegistrarUsuario(string usuario)
+        private void MostrarRegistrarUsuario()
         {
             //Ocultar Formulario Actual
             Hide();
@@ -168,7 +169,7 @@ namespace GrupoDePoblacion
             AgregarUsuario AgregarUsuario = new AgregarUsuario();
             if (usuario != null)
             {
-                AgregarUsuario.CargarCajasDeTexto(usuario);
+                AgregarUsuario = new AgregarUsuario(usuario);
             }
             AgregarUsuario.ShowDialog();
 

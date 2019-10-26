@@ -32,8 +32,6 @@
             this.btLimpiar = new System.Windows.Forms.Button();
             this.btSalir = new System.Windows.Forms.Button();
             this.btProcesar = new System.Windows.Forms.Button();
-            this.rtxt_Informe = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_peso = new System.Windows.Forms.TextBox();
             this.txt_apellido = new System.Windows.Forms.TextBox();
@@ -55,9 +53,11 @@
             this.txt_leciones = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_atras = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.rtxt_Informe = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btLimpiar
@@ -67,7 +67,7 @@
             this.btLimpiar.Location = new System.Drawing.Point(184, 410);
             this.btLimpiar.Name = "btLimpiar";
             this.btLimpiar.Size = new System.Drawing.Size(80, 26);
-            this.btLimpiar.TabIndex = 1;
+            this.btLimpiar.TabIndex = 3;
             this.btLimpiar.Text = "Limpiar";
             this.btLimpiar.UseVisualStyleBackColor = true;
             this.btLimpiar.Click += new System.EventHandler(this.btLimpiar_Click);
@@ -79,7 +79,7 @@
             this.btSalir.Location = new System.Drawing.Point(488, 410);
             this.btSalir.Name = "btSalir";
             this.btSalir.Size = new System.Drawing.Size(80, 26);
-            this.btSalir.TabIndex = 2;
+            this.btSalir.TabIndex = 5;
             this.btSalir.Text = "Salir";
             this.btSalir.UseVisualStyleBackColor = true;
             this.btSalir.Click += new System.EventHandler(this.btSalir_Click);
@@ -91,32 +91,10 @@
             this.btProcesar.Location = new System.Drawing.Point(22, 410);
             this.btProcesar.Name = "btProcesar";
             this.btProcesar.Size = new System.Drawing.Size(90, 26);
-            this.btProcesar.TabIndex = 0;
+            this.btProcesar.TabIndex = 2;
             this.btProcesar.Text = "Procesar";
             this.btProcesar.UseVisualStyleBackColor = true;
             this.btProcesar.Click += new System.EventHandler(this.btProcesar_Click);
-            // 
-            // rtxt_Informe
-            // 
-            this.rtxt_Informe.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.rtxt_Informe.Location = new System.Drawing.Point(16, 20);
-            this.rtxt_Informe.Name = "rtxt_Informe";
-            this.rtxt_Informe.Size = new System.Drawing.Size(305, 343);
-            this.rtxt_Informe.TabIndex = 0;
-            this.rtxt_Informe.Text = "";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.rtxt_Informe);
-            this.groupBox1.Enabled = false;
-            this.groupBox1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.groupBox1.Location = new System.Drawing.Point(248, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(327, 382);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informe";
             // 
             // label8
             // 
@@ -227,7 +205,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(228, 193);
-            this.groupBox2.TabIndex = 32;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacion Personal";
             // 
@@ -336,7 +314,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 207);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(228, 187);
-            this.groupBox3.TabIndex = 33;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Informe Medico";
             // 
@@ -347,10 +325,32 @@
             this.btn_atras.Location = new System.Drawing.Point(336, 410);
             this.btn_atras.Name = "btn_atras";
             this.btn_atras.Size = new System.Drawing.Size(80, 26);
-            this.btn_atras.TabIndex = 34;
+            this.btn_atras.TabIndex = 4;
             this.btn_atras.Text = "Atras";
             this.btn_atras.UseVisualStyleBackColor = true;
             this.btn_atras.Click += new System.EventHandler(this.Btn_atras_Click);
+            // 
+            // rtxt_Informe
+            // 
+            this.rtxt_Informe.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.rtxt_Informe.Location = new System.Drawing.Point(16, 20);
+            this.rtxt_Informe.Name = "rtxt_Informe";
+            this.rtxt_Informe.Size = new System.Drawing.Size(305, 343);
+            this.rtxt_Informe.TabIndex = 0;
+            this.rtxt_Informe.Text = "";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.rtxt_Informe);
+            this.groupBox1.Enabled = false;
+            this.groupBox1.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.groupBox1.Location = new System.Drawing.Point(248, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(327, 382);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Informe";
             // 
             // AgregarUsuario
             // 
@@ -372,11 +372,11 @@
             this.Text = "                                                                                G" +
     "rupoDePoblacion";
             this.Load += new System.EventHandler(this.AgregarUsuario_load);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -386,8 +386,6 @@
         private System.Windows.Forms.Button btLimpiar;
         private System.Windows.Forms.Button btSalir;
         private System.Windows.Forms.Button btProcesar;
-        private System.Windows.Forms.RichTextBox rtxt_Informe;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_peso;
         private System.Windows.Forms.TextBox txt_apellido;
@@ -409,6 +407,8 @@
         private System.Windows.Forms.TextBox txt_leciones;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_atras;
+        private System.Windows.Forms.RichTextBox rtxt_Informe;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
