@@ -165,16 +165,27 @@ namespace GrupoDePoblacion
             //Ocultar Formulario Actual
             Hide();
 
-            //Mostrar Formulario Siguiente
-            AgregarUsuario AgregarUsuario = new AgregarUsuario();
+            
             if (usuario != null)
             {
-                AgregarUsuario = new AgregarUsuario(usuario);
-            }
-            AgregarUsuario.ShowDialog();
+                //Mostrar Formulario Siguiente
+                RegistrodeDatos RegistrodeDatos = new RegistrodeDatos(usuario,true);
 
-            //Cerrar Formulario siguiente
-            AgregarUsuario.Close();
+                RegistrodeDatos.ShowDialog();
+
+                //Cerrar Formulario siguiente
+                RegistrodeDatos.Close();
+            }
+            else
+            {
+                //Mostrar Formulario Siguiente
+                RegistrodeUsuario RegistrodeUsuario = new RegistrodeUsuario();
+
+                RegistrodeUsuario.ShowDialog();
+
+                //Cerrar Formulario siguiente
+                RegistrodeUsuario.Close();
+            }            
 
             //Abrir Formulario Actual
             Show();

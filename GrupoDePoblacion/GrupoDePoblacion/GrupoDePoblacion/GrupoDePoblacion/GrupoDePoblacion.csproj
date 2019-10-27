@@ -106,11 +106,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarUsuario.cs">
+    <Compile Include="RegistrodeDatos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarUsuario.Designer.cs">
-      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    <Compile Include="RegistrodeDatos.Designer.cs">
+      <DependentUpon>RegistrodeDatos.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientesDataSet.cs">
       <DependentUpon>ClientesDataSet.xsd</DependentUpon>
@@ -128,8 +128,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AgregarUsuario.resx">
-      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    <Compile Include="RegistrodeUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrodeUsuario.Designer.cs">
+      <DependentUpon>RegistrodeUsuario.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RegistrodeDatos.resx">
+      <DependentUpon>RegistrodeDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InicioDeSesion.resx">
       <DependentUpon>InicioDeSesion.cs</DependentUpon>
@@ -144,6 +150,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegistrodeUsuario.resx">
+      <DependentUpon>RegistrodeUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClientesDataSet.xsc">
       <DependentUpon>ClientesDataSet.xsd</DependentUpon>
     </None>

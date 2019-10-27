@@ -198,7 +198,7 @@
   <xs:element name="ClientesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ClientesDataSet" msprop:Generator_UserDSName="ClientesDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_RowClassName="UsuariosRow" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent">
+        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent" msprop:Generator_RowClassName="UsuariosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -233,7 +233,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Perfil" msprop:Generator_TableClassName="PerfilDataTable" msprop:Generator_TableVarName="tablePerfil" msprop:Generator_TablePropName="Perfil" msprop:Generator_RowDeletingName="PerfilRowDeleting" msprop:Generator_RowChangingName="PerfilRowChanging" msprop:Generator_RowEvHandlerName="PerfilRowChangeEventHandler" msprop:Generator_RowDeletedName="PerfilRowDeleted" msprop:Generator_UserTableName="Perfil" msprop:Generator_RowChangedName="PerfilRowChanged" msprop:Generator_RowEvArgName="PerfilRowChangeEvent" msprop:Generator_RowClassName="PerfilRow">
+        <xs:element name="Perfil" msprop:Generator_TableClassName="PerfilDataTable" msprop:Generator_TableVarName="tablePerfil" msprop:Generator_RowChangedName="PerfilRowChanged" msprop:Generator_TablePropName="Perfil" msprop:Generator_RowDeletingName="PerfilRowDeleting" msprop:Generator_RowChangingName="PerfilRowChanging" msprop:Generator_RowEvHandlerName="PerfilRowChangeEventHandler" msprop:Generator_RowDeletedName="PerfilRowDeleted" msprop:Generator_RowClassName="PerfilRow" msprop:Generator_UserTableName="Perfil" msprop:Generator_RowEvArgName="PerfilRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
