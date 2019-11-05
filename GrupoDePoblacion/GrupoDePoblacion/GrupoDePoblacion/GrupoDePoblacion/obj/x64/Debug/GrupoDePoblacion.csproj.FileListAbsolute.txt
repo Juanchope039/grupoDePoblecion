@@ -6,8 +6,11 @@ D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\Grup
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.InicioDeSesion.resources
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.Properties.Resources.resources
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.csproj.GenerateResource.cache
-D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.csproj.CoreCompileInputs.cache
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.exe
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.pdb
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.RegistrodeDatos.resources
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.RegistrodeUsuario.resources
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\GrupoDePoblacion.exe.manifest
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\GrupoDePoblacion.application
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.exe.manifest
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.application

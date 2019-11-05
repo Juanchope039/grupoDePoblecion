@@ -57,6 +57,7 @@
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(100, 20);
             this.txt_usuario.TabIndex = 1;
+            this.txt_usuario.Leave += new System.EventHandler(this.txt_usuario_Leave);
             // 
             // txt_correo
             // 
@@ -64,6 +65,9 @@
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.Size = new System.Drawing.Size(100, 20);
             this.txt_correo.TabIndex = 3;
+            this.txt_correo.Tag = "El correo debe contener un @";
+            this.txt_correo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_correo_KeyPress);
+            this.txt_correo.Leave += new System.EventHandler(this.txt_correo_Leave);
             // 
             // label2
             // 
@@ -80,6 +84,7 @@
             this.txt_contrasena1.Name = "txt_contrasena1";
             this.txt_contrasena1.Size = new System.Drawing.Size(100, 20);
             this.txt_contrasena1.TabIndex = 5;
+            this.txt_contrasena1.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -96,6 +101,9 @@
             this.txt_contrasena2.Name = "txt_contrasena2";
             this.txt_contrasena2.Size = new System.Drawing.Size(100, 20);
             this.txt_contrasena2.TabIndex = 7;
+            this.txt_contrasena2.Tag = "la contraseña debe ser la misma en ambos casos";
+            this.txt_contrasena2.UseSystemPasswordChar = true;
+            this.txt_contrasena2.Leave += new System.EventHandler(this.txt_contrasena2_Leave);
             // 
             // label4
             // 
@@ -111,7 +119,7 @@
             this.btn_salir.Location = new System.Drawing.Point(12, 73);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(75, 23);
-            this.btn_salir.TabIndex = 8;
+            this.btn_salir.TabIndex = 11;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
             this.btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
@@ -121,7 +129,7 @@
             this.btn_limpiar.Location = new System.Drawing.Point(130, 73);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(75, 23);
-            this.btn_limpiar.TabIndex = 9;
+            this.btn_limpiar.TabIndex = 10;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = true;
             this.btn_limpiar.Click += new System.EventHandler(this.Btn_limpiar_Click);
@@ -131,7 +139,7 @@
             this.btn_atras.Location = new System.Drawing.Point(248, 73);
             this.btn_atras.Name = "btn_atras";
             this.btn_atras.Size = new System.Drawing.Size(75, 23);
-            this.btn_atras.TabIndex = 10;
+            this.btn_atras.TabIndex = 9;
             this.btn_atras.Text = "Atras";
             this.btn_atras.UseVisualStyleBackColor = true;
             this.btn_atras.Click += new System.EventHandler(this.Btn_atras_Click);
@@ -141,7 +149,7 @@
             this.btn_siguiente.Location = new System.Drawing.Point(366, 73);
             this.btn_siguiente.Name = "btn_siguiente";
             this.btn_siguiente.Size = new System.Drawing.Size(75, 23);
-            this.btn_siguiente.TabIndex = 11;
+            this.btn_siguiente.TabIndex = 8;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = true;
             this.btn_siguiente.Click += new System.EventHandler(this.Btn_siguiente_Click);

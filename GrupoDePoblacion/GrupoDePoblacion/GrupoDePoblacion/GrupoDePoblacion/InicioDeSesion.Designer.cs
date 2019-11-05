@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_usuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_pregunta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ckb_mo_contrasena
@@ -112,12 +113,25 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Usuario: ";
             // 
+            // btn_pregunta
+            // 
+            this.btn_pregunta.BackColor = System.Drawing.Color.Transparent;
+            this.btn_pregunta.BackgroundImage = global::GrupoDePoblacion.Properties.Resources.pregunta;
+            this.btn_pregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_pregunta.Location = new System.Drawing.Point(243, 12);
+            this.btn_pregunta.Name = "btn_pregunta";
+            this.btn_pregunta.Size = new System.Drawing.Size(25, 25);
+            this.btn_pregunta.TabIndex = 18;
+            this.btn_pregunta.UseVisualStyleBackColor = false;
+            this.btn_pregunta.Click += new System.EventHandler(this.btn_pregunta_Click);
+            // 
             // InicioDeSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 156);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_pregunta);
             this.Controls.Add(this.ckb_mo_contrasena);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.btn_Registrarse);
@@ -144,5 +158,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_usuario;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_pregunta;
     }
 }

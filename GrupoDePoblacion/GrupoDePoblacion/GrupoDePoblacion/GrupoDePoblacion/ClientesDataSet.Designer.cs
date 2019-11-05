@@ -659,6 +659,8 @@ namespace GrupoDePoblacion {
             
             private global::System.Data.DataColumn columnfecha;
             
+            private global::System.Data.DataColumn columngenero;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerfilDataTable() {
@@ -790,6 +792,14 @@ namespace GrupoDePoblacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn generoColumn {
+                get {
+                    return this.columngenero;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -825,7 +835,7 @@ namespace GrupoDePoblacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PerfilRow AddPerfilRow(string usuario, short edad, double peso, double altura, string leciones, string grupo_sanguineo, string enfermedades, string discapacidades, string grupo_de_poblacion, double imc, string fecha) {
+            public PerfilRow AddPerfilRow(string usuario, short edad, double peso, double altura, string leciones, string grupo_sanguineo, string enfermedades, string discapacidades, string grupo_de_poblacion, double imc, string fecha, string genero) {
                 PerfilRow rowPerfilRow = ((PerfilRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -839,7 +849,8 @@ namespace GrupoDePoblacion {
                         discapacidades,
                         grupo_de_poblacion,
                         imc,
-                        fecha};
+                        fecha,
+                        genero};
                 rowPerfilRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPerfilRow);
                 return rowPerfilRow;
@@ -881,6 +892,7 @@ namespace GrupoDePoblacion {
                 this.columngrupo_de_poblacion = base.Columns["grupo de poblacion"];
                 this.columnimc = base.Columns["imc"];
                 this.columnfecha = base.Columns["fecha"];
+                this.columngenero = base.Columns["genero"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -910,6 +922,8 @@ namespace GrupoDePoblacion {
                 base.Columns.Add(this.columnimc);
                 this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha);
+                this.columngenero = new global::System.Data.DataColumn("genero", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngenero);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnid.AutoIncrement = true;
@@ -924,6 +938,7 @@ namespace GrupoDePoblacion {
                 this.columndiscapacidades.MaxLength = 255;
                 this.columngrupo_de_poblacion.MaxLength = 255;
                 this.columnfecha.MaxLength = 255;
+                this.columngenero.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1391,6 +1406,22 @@ namespace GrupoDePoblacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string genero {
+                get {
+                    try {
+                        return ((string)(this[this.tablePerfil.generoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'genero\' de la tabla \'Perfil\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePerfil.generoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsusuarioNull() {
                 return this.IsNull(this.tablePerfil.usuarioColumn);
             }
@@ -1519,6 +1550,18 @@ namespace GrupoDePoblacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetfechaNull() {
                 this[this.tablePerfil.fechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsgeneroNull() {
+                return this.IsNull(this.tablePerfil.generoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetgeneroNull() {
+                this[this.tablePerfil.generoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2143,10 +2186,11 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("grupo de poblacion", "grupo de poblacion");
             tableMapping.ColumnMappings.Add("imc", "imc");
             tableMapping.ColumnMappings.Add("fecha", "fecha");
+            tableMapping.ColumnMappings.Add("genero", "genero");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Perfil` WHERE ((`id` = ?) AND ((? = 1 AND `usuario` IS NULL) OR (`usuario` = ?)) AND ((? = 1 AND `edad` IS NULL) OR (`edad` = ?)) AND ((? = 1 AND `peso` IS NULL) OR (`peso` = ?)) AND ((? = 1 AND `altura` IS NULL) OR (`altura` = ?)) AND ((? = 1 AND `leciones` IS NULL) OR (`leciones` = ?)) AND ((? = 1 AND `grupo sanguineo` IS NULL) OR (`grupo sanguineo` = ?)) AND ((? = 1 AND `enfermedades` IS NULL) OR (`enfermedades` = ?)) AND ((? = 1 AND `discapacidades` IS NULL) OR (`discapacidades` = ?)) AND ((? = 1 AND `grupo de poblacion` IS NULL) OR (`grupo de poblacion` = ?)) AND ((? = 1 AND `imc` IS NULL) OR (`imc` = ?)) AND ((? = 1 AND `fecha` IS NULL) OR (`fecha` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Perfil` WHERE ((`id` = ?) AND ((? = 1 AND `usuario` IS NULL) OR (`usuario` = ?)) AND ((? = 1 AND `edad` IS NULL) OR (`edad` = ?)) AND ((? = 1 AND `peso` IS NULL) OR (`peso` = ?)) AND ((? = 1 AND `altura` IS NULL) OR (`altura` = ?)) AND ((? = 1 AND `leciones` IS NULL) OR (`leciones` = ?)) AND ((? = 1 AND `grupo sanguineo` IS NULL) OR (`grupo sanguineo` = ?)) AND ((? = 1 AND `enfermedades` IS NULL) OR (`enfermedades` = ?)) AND ((? = 1 AND `discapacidades` IS NULL) OR (`discapacidades` = ?)) AND ((? = 1 AND `grupo de poblacion` IS NULL) OR (`grupo de poblacion` = ?)) AND ((? = 1 AND `imc` IS NULL) OR (`imc` = ?)) AND ((? = 1 AND `fecha` IS NULL) OR (`fecha` = ?)) AND ((? = 1 AND `genero` IS NULL) OR (`genero` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_usuario", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, true, null));
@@ -2170,12 +2214,14 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_imc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "imc", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_imc", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "imc", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_fecha", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fecha", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fecha", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_genero", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "genero", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_genero", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "genero", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `Perfil` (`usuario`, `edad`, `peso`, `altura`, `leciones`, `grupo san" +
-                "guineo`, `enfermedades`, `discapacidades`, `grupo de poblacion`, `imc`, `fecha`)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "guineo`, `enfermedades`, `discapacidades`, `grupo de poblacion`, `imc`, `fecha`," +
+                " `genero`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("edad", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "edad", global::System.Data.DataRowVersion.Current, false, null));
@@ -2187,10 +2233,11 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("discapacidades", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "discapacidades", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("grupo_de_poblacion", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "grupo de poblacion", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("imc", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "imc", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fecha", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fecha", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("genero", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "genero", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `Perfil` SET `usuario` = ?, `edad` = ?, `peso` = ?, `altura` = ?, `leciones` = ?, `grupo sanguineo` = ?, `enfermedades` = ?, `discapacidades` = ?, `grupo de poblacion` = ?, `imc` = ?, `fecha` = ? WHERE ((`id` = ?) AND ((? = 1 AND `usuario` IS NULL) OR (`usuario` = ?)) AND ((? = 1 AND `edad` IS NULL) OR (`edad` = ?)) AND ((? = 1 AND `peso` IS NULL) OR (`peso` = ?)) AND ((? = 1 AND `altura` IS NULL) OR (`altura` = ?)) AND ((? = 1 AND `leciones` IS NULL) OR (`leciones` = ?)) AND ((? = 1 AND `grupo sanguineo` IS NULL) OR (`grupo sanguineo` = ?)) AND ((? = 1 AND `enfermedades` IS NULL) OR (`enfermedades` = ?)) AND ((? = 1 AND `discapacidades` IS NULL) OR (`discapacidades` = ?)) AND ((? = 1 AND `grupo de poblacion` IS NULL) OR (`grupo de poblacion` = ?)) AND ((? = 1 AND `imc` IS NULL) OR (`imc` = ?)) AND ((? = 1 AND `fecha` IS NULL) OR (`fecha` = ?)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Perfil` SET `usuario` = ?, `edad` = ?, `peso` = ?, `altura` = ?, `leciones` = ?, `grupo sanguineo` = ?, `enfermedades` = ?, `discapacidades` = ?, `grupo de poblacion` = ?, `imc` = ?, `fecha` = ?, `genero` = ? WHERE ((`id` = ?) AND ((? = 1 AND `usuario` IS NULL) OR (`usuario` = ?)) AND ((? = 1 AND `edad` IS NULL) OR (`edad` = ?)) AND ((? = 1 AND `peso` IS NULL) OR (`peso` = ?)) AND ((? = 1 AND `altura` IS NULL) OR (`altura` = ?)) AND ((? = 1 AND `leciones` IS NULL) OR (`leciones` = ?)) AND ((? = 1 AND `grupo sanguineo` IS NULL) OR (`grupo sanguineo` = ?)) AND ((? = 1 AND `enfermedades` IS NULL) OR (`enfermedades` = ?)) AND ((? = 1 AND `discapacidades` IS NULL) OR (`discapacidades` = ?)) AND ((? = 1 AND `grupo de poblacion` IS NULL) OR (`grupo de poblacion` = ?)) AND ((? = 1 AND `imc` IS NULL) OR (`imc` = ?)) AND ((? = 1 AND `fecha` IS NULL) OR (`fecha` = ?)) AND ((? = 1 AND `genero` IS NULL) OR (`genero` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("edad", global::System.Data.OleDb.OleDbType.SmallInt, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "edad", global::System.Data.DataRowVersion.Current, false, null));
@@ -2202,7 +2249,8 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("discapacidades", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "discapacidades", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("grupo_de_poblacion", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "grupo de poblacion", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("imc", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "imc", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fecha", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("fecha", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("genero", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "genero", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_id", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "id", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_usuario", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_usuario", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "usuario", global::System.Data.DataRowVersion.Original, false, null));
@@ -2225,7 +2273,9 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_imc", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "imc", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_imc", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "imc", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_fecha", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fecha", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_fecha", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "fecha", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_genero", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "genero", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_genero", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "genero", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2242,7 +2292,7 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, usuario, edad, peso, altura, leciones, [grupo sanguineo], enfermedades" +
-                ", discapacidades, [grupo de poblacion], imc, fecha FROM Perfil";
+                ", discapacidades, [grupo de poblacion], imc, fecha, genero FROM Perfil";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2303,7 +2353,7 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_usuario, global::System.Nullable<short> Original_edad, global::System.Nullable<double> Original_peso, global::System.Nullable<double> Original_altura, string Original_leciones, string Original_grupo_sanguineo, string Original_enfermedades, string Original_discapacidades, string Original_grupo_de_poblacion, global::System.Nullable<double> Original_imc, string Original_fecha) {
+        public virtual int Delete(int Original_id, string Original_usuario, global::System.Nullable<short> Original_edad, global::System.Nullable<double> Original_peso, global::System.Nullable<double> Original_altura, string Original_leciones, string Original_grupo_sanguineo, string Original_enfermedades, string Original_discapacidades, string Original_grupo_de_poblacion, global::System.Nullable<double> Original_imc, global::System.Nullable<global::System.DateTime> Original_fecha, string Original_genero) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_usuario == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -2385,13 +2435,20 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((Original_fecha == null)) {
+            if ((Original_fecha.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((System.DateTime)(Original_fecha.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
+            if ((Original_genero == null)) {
+                throw new global::System.ArgumentNullException("Original_genero");
+            }
             else {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_fecha));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_genero));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2413,7 +2470,7 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string usuario, global::System.Nullable<short> edad, global::System.Nullable<double> peso, global::System.Nullable<double> altura, string leciones, string grupo_sanguineo, string enfermedades, string discapacidades, string grupo_de_poblacion, global::System.Nullable<double> imc, string fecha) {
+        public virtual int Insert(string usuario, global::System.Nullable<short> edad, global::System.Nullable<double> peso, global::System.Nullable<double> altura, string leciones, string grupo_sanguineo, string enfermedades, string discapacidades, string grupo_de_poblacion, global::System.Nullable<double> imc, global::System.Nullable<global::System.DateTime> fecha, string genero) {
             if ((usuario == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -2474,11 +2531,17 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((fecha == null)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            if ((fecha.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((System.DateTime)(fecha.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(fecha));
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((genero == null)) {
+                throw new global::System.ArgumentNullException("genero");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(genero));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2511,7 +2574,8 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
                     string discapacidades, 
                     string grupo_de_poblacion, 
                     global::System.Nullable<double> imc, 
-                    string fecha, 
+                    global::System.Nullable<global::System.DateTime> fecha, 
+                    string genero, 
                     int Original_id, 
                     string Original_usuario, 
                     global::System.Nullable<short> Original_edad, 
@@ -2523,7 +2587,8 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
                     string Original_discapacidades, 
                     string Original_grupo_de_poblacion, 
                     global::System.Nullable<double> Original_imc, 
-                    string Original_fecha) {
+                    global::System.Nullable<global::System.DateTime> Original_fecha, 
+                    string Original_genero) {
             if ((usuario == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -2584,100 +2649,113 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((fecha == null)) {
+            if ((fecha.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(fecha.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(fecha));
+            if ((genero == null)) {
+                throw new global::System.ArgumentNullException("genero");
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_id));
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(genero));
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_id));
             if ((Original_usuario == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_usuario));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_usuario));
             }
             if ((Original_edad.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((short)(Original_edad.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((short)(Original_edad.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_peso.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(Original_peso.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(Original_peso.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_altura.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(Original_altura.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(Original_altura.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_leciones == null)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_leciones));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_leciones));
             }
             if ((Original_grupo_sanguineo == null)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_grupo_sanguineo));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_grupo_sanguineo));
             }
             if ((Original_enfermedades == null)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_enfermedades));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_enfermedades));
             }
             if ((Original_discapacidades == null)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_discapacidades));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_discapacidades));
             }
             if ((Original_grupo_de_poblacion == null)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_grupo_de_poblacion));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_grupo_de_poblacion));
             }
             if ((Original_imc.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((double)(Original_imc.Value));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((double)(Original_imc.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            if ((Original_fecha == null)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+            if ((Original_fecha.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((System.DateTime)(Original_fecha.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_fecha));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((Original_genero == null)) {
+                throw new global::System.ArgumentNullException("Original_genero");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_genero));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

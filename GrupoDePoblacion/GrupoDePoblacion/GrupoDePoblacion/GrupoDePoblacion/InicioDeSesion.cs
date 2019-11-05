@@ -28,6 +28,7 @@ namespace GrupoDePoblacion
         private void Btn_Registrarse_Click(object sender, EventArgs e)
         {
             this.usuario = null;
+            Hide();
             MostrarRegistrarUsuario();
         }
 
@@ -84,8 +85,17 @@ namespace GrupoDePoblacion
                 if (validar)
                 {
                     this.usuario = usuario;
-                    MessageBox.Show("Inicio de Sesión Sactisfactorio.");
+
+                    //Ocultar Formulario Actual
+                    Hide();
+
                     MostrarRegistrarUsuario();
+
+                    //Reiniciar contador
+                    contador=0;
+
+                    //Abrir Formulario Actual
+                    Show();
                 }
                 else if (!validar && contador > 3)
                 {
@@ -162,10 +172,6 @@ namespace GrupoDePoblacion
 
         private void MostrarRegistrarUsuario()
         {
-            //Ocultar Formulario Actual
-            Hide();
-
-            
             if (usuario != null)
             {
                 //Mostrar Formulario Siguiente
@@ -186,10 +192,6 @@ namespace GrupoDePoblacion
                 //Cerrar Formulario siguiente
                 RegistrodeUsuario.Close();
             }            
-
-            //Abrir Formulario Actual
-            Show();
-
         }
 
         private void Ckb_mo_contrasena_CheckedChanged(object sender, EventArgs e)
@@ -204,6 +206,11 @@ namespace GrupoDePoblacion
                 ckb_mo_contrasena.Text = "Mostrar Contraseña";
             }
             txt_contrasena.UseSystemPasswordChar = !ckb_mo_contrasena.Checked;
+        }
+
+        private void btn_pregunta_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ayuda","Instrucciones",MessageBoxButtons.OK,MessageBoxIcon.Question);
         }
     }
 }

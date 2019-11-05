@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 
 namespace GrupoDePoblacion
 {
     public partial class RegistrodeDatos : Form
     {
-        string usuario, nombre, apellido, leciones, grupoSanguineo, enfermedades, discapacidades;
+        string usuario, nombre, apellido, leciones, grupoSanguineo, enfermedades, discapacidades, fecha;
         int edad;
+        char genero = ' ';
         double peso, altura;
         Boolean actualizacion = false;
 
@@ -26,7 +19,7 @@ namespace GrupoDePoblacion
             test();
         }
 
-        public RegistrodeDatos(string usuario,Boolean actualizacion)
+        public RegistrodeDatos(string usuario, Boolean actualizacion)
         {
             this.usuario = usuario;
             this.actualizacion = actualizacion;
@@ -34,10 +27,27 @@ namespace GrupoDePoblacion
             test();
             if (actualizacion)
             {
+                btn_salir.Visible = true;
                 CargarCajasDeTexto();
+                if (genero=='M')
+                {
+                    MessageBox.Show("Bienvenido " + nombre + " " + apellido + ".");
+                }
+                else if (genero  =='F')
+                {
+                    MessageBox.Show("Bienvenida " + nombre + " " + apellido + ".");
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error.");
+                    Close();
+                }
+                if (fecha.ToString().Substring(0, 9) == DateTime.Now.ToString("d/MM/yyyy").ToString())
+                {
+                    MostrarMenu();
+                }
+
             }
-            
-            
         }
 
         private void btSalir_Click(object sender, EventArgs e)
@@ -52,9 +62,56 @@ namespace GrupoDePoblacion
 
         private void btProcesar_Click(object sender, EventArgs e)
         {
-            EnviarInforme();
-            GuardarAutoCompletado();
-            Close();
+            if (validarCampos())
+            {
+                //Declaracion
+                string grupodepoblacion = "";
+                double IMC = 0;
+
+                //Entradas
+                nombre = txt_nombre.Text;
+                apellido = txt_apellido.Text;
+                edad = int.Parse(txt_edad.Text);
+                peso = double.Parse(txt_peso.Text);
+                altura = double.Parse(txt_altura.Text);
+                if (rb_femenino.Checked)
+                    genero = 'F';
+                if (rb_masculino.Checked)
+                    genero = 'M';
+                if (genero == ' ')
+                {
+                    Close();
+                }                    
+                leciones = txt_leciones.Text;
+                grupoSanguineo = txt_grupoSanguineo.Text;
+                enfermedades = txt_enfermedades.Text;
+                discapacidades = txt_discapacidades.Text;
+
+                //metodos
+                grupodepoblacion = grupopoblacion(edad, grupodepoblacion);
+                IMC = CalcularIMC(peso, altura);
+
+                //metodos                
+                EnviaraBasedeDatos(grupodepoblacion, IMC);//Enviar a base de datos
+                GuardarAutoCompletado();
+                Close();
+            }            
+        }
+
+        private bool validarCampos()
+        {
+            if (txt_nombre.TextLength==0 | txt_apellido.TextLength == 0
+                | txt_edad.TextLength == 0 | txt_peso.TextLength == 0
+                | txt_altura.TextLength == 0 | txt_leciones.TextLength == 0
+                | txt_grupoSanguineo.TextLength == 0 | txt_enfermedades.TextLength == 0
+                | txt_discapacidades.TextLength == 0 | !(rb_masculino.Checked
+                | rb_femenino.Checked))
+            {
+                MessageBox.Show("Uno o varios campos son invalidos");
+                return false;
+            }
+            return true;
+            
         }
 
         private void AgregarUsuario_load(object sender, EventArgs e)
@@ -78,33 +135,6 @@ namespace GrupoDePoblacion
                 Properties.Settings.Default.Discapacidades.Add(discapacidades);
 
             Properties.Settings.Default.Save();
-        }
-
-        private void EnviarInforme()
-        {
-            //Declaracion
-            string grupodepoblacion = "";
-            double IMC = 0;
-
-            //Entradas
-            nombre = txt_nombre.Text;
-            apellido = txt_apellido.Text;
-            edad = int.Parse(txt_edad.Text);
-            peso = double.Parse(txt_peso.Text);
-            altura = double.Parse(txt_altura.Text);
-            leciones = txt_leciones.Text;
-            grupoSanguineo = txt_grupoSanguineo.Text;
-            enfermedades = txt_enfermedades.Text;
-            discapacidades = txt_discapacidades.Text;
-
-            //metodos
-            grupodepoblacion = grupopoblacion(edad, grupodepoblacion);
-            IMC = CalcularIMC(peso, altura);
-
-
-            //Enviar a base de datos
-            EnviaraBasedeDatos(grupodepoblacion,IMC);
-
         }
 
         private double CalcularIMC(double peso, double altura)
@@ -173,6 +203,148 @@ namespace GrupoDePoblacion
             txt_discapacidades.Clear();
         }
 
+        private void txt_nombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_nombre.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_nombre.Focus();
+            }//*/
+        }
+
+        private void txt_edad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                MessageBox.Show("no se aceptan digitos no numericos");
+                e.Handled = true;
+            }
+        }
+
+        private void txt_apellido_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_apellido.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_apellido.Focus();
+
+            }//*/
+        }
+    
+        private void txt_edad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_edad.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_edad.Focus();
+            }
+            else if (int.Parse(txt_edad.Text) > 150)
+            {
+                MessageBox.Show("La edad maxima aceptada es 150 años");
+                txt_edad.Focus();
+            }
+            else if (int.Parse(txt_edad.Text) < 10)
+            {
+                MessageBox.Show("La edad minima aceptada es de 10 años");
+            }
+            //*/
+        }
+
+        private void txt_peso_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_peso.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_peso.Focus();
+            }//*/
+        }
+
+        private void txt_altura_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_altura.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_altura.Focus();
+            }//*/
+        }
+
+        private void txt_leciones_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_leciones.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_leciones.Focus();
+            }//*/
+        }
+
+        private void txt_grupoSanguineo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_grupoSanguineo.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_grupoSanguineo.Focus();
+            }//*/
+        }
+
+        private void txt_enfermedades_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_enfermedades.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_enfermedades.Focus();
+            }//*/
+        }
+
+        private void txt_discapacidades_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txt_discapacidades.TextLength == 0)
+            {
+                MessageBox.Show("El campo no puede estar vacio.");
+                txt_discapacidades.Focus();
+            }//*/
+        }
+
+        private void txt_peso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Boolean punto = ! txt_peso.Text.Contains(".");
+            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (e.KeyChar == '.' & punto)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                MessageBox.Show("no se aceptan digitos no numericos y solo un punto");
+                e.Handled = true;
+            }
+        }
+
+        private void txt_altura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Boolean punto = txt_altura.Text.Contains(".");
+            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | !(e.KeyChar == 46 & punto))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                MessageBox.Show("no se aceptan digitos no numericos y solo un punto");
+                e.Handled = true;
+            }
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         /// <summary>
         /// Hace una verificacion en busca de variables vacias y las inicializa
         /// </summary>
@@ -207,13 +379,13 @@ namespace GrupoDePoblacion
 
                 //Cerrar todos los formularios en proceso
                 Application.ExitThread();
-                Close();
+                Close();            
             }
             else
             {
                 // mostrar formulario
                 Show();
-            }
+            }//*/
         }
 
         /// <summary>
@@ -224,27 +396,59 @@ namespace GrupoDePoblacion
         {
             //Obtiene los datos necesarios para cargar el formulario
             string[] Datos = CargarDatos();
+
             // Desabilita las cajas de texto para que no puedan ser modificadas
             txt_nombre.Enabled = false;
             txt_apellido.Enabled = false;
+            rb_masculino.Enabled = false;
+            rb_femenino.Enabled = false;
 
-            txt_nombre.Text = Datos[0];
-            txt_apellido.Text = Datos[1];/*
-            txt_edad.Text = Datos[2];
-            txt_peso.Text = Datos[3];
-            txt_altura.Text = Datos[4];
-            txt_leciones.Text = Datos[5];
-            txt_grupoSanguineo.Text = Datos[6];
-            txt_enfermedades.Text = Datos[7];
-            txt_discapacidades.Text = Datos[8];//*/
+            if (Datos != null)
+            {
+                nombre = Datos[0];
+                apellido = Datos[1];
+                edad = int.Parse(Datos[2]);
+                peso = double.Parse(Datos[3]);
+                altura = double.Parse(Datos[4]);
+                leciones = Datos[5];
+                grupoSanguineo = Datos[6];
+                enfermedades = Datos[7];
+                discapacidades = Datos[8];
+                genero = char.Parse(Datos[9]);
+                fecha = Datos[10];
+
+                txt_nombre.Text = nombre;
+                txt_apellido.Text = apellido;
+                txt_edad.Text = edad.ToString();
+                txt_peso.Text = peso.ToString();
+                txt_altura.Text = altura.ToString();
+                txt_leciones.Text = leciones;
+                txt_grupoSanguineo.Text = grupoSanguineo;
+                txt_enfermedades.Text = enfermedades;
+                txt_discapacidades.Text = discapacidades;
+                if (genero == 'M')
+                {
+                    rb_masculino.Checked = true;
+                }
+                else if (genero == 'F')
+                {
+                    rb_femenino.Checked = true;
+                }
+            }
+            
+        }
+
+        private void MostrarMenu()
+        {
+            MessageBox.Show("Bienvenid@..");
         }
 
         private string[] CargarDatos()
         {
             //declaracion de salida
-            string[] SalidadeDatos = new string[2];
+            string[] SalidadeDatos;
 
-             // Direccion de la Base de Datos
+            // Direccion de la Base de Datos
             string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
@@ -255,7 +459,10 @@ namespace GrupoDePoblacion
 
             // crear la consulta (Query)
             String ConsultaQuery =
-                "SELECT nombre, apellido FROM Usuarios WHERE(usuario = @usuario)";//
+                /*"SELECT nombre, apellido FROM Usuarios WHERE(usuario = @usuario)";//*/
+                " SELECT  Usuarios.nombre, Usuarios.apellido, Perfil.edad, Perfil.peso, Perfil.altura, Perfil.leciones, Perfil.[grupo sanguineo], Perfil.enfermedades, Perfil.discapacidades, Perfil.genero, Perfil.fecha, Perfil.[grupo de poblacion], Perfil.imc" +
+                " FROM (Perfil INNER JOIN Usuarios ON Perfil.usuario = Usuarios.usuario) " +
+                " WHERE (Usuarios.usuario = @usuario)";
 
             // crear un objecto comando para efectuar la consulta
             OleDbCommand Comando = new OleDbCommand(ConsultaQuery, Conexion);
@@ -269,18 +476,28 @@ namespace GrupoDePoblacion
             // Vamos a ejecutar la c¿Consulta por medio del objecto comando
             LectordeDatos = Comando.ExecuteReader();
 
+            SalidadeDatos = new string[LectordeDatos.FieldCount];
+
             // Validamos Si existen existas en esta consulta
             if (LectordeDatos.HasRows)
             {
-                while (LectordeDatos.Read())
+                LectordeDatos.Read();
+                for (int i = 0; i < SalidadeDatos.Length; i++)
                 {
-                    SalidadeDatos[0] = LectordeDatos[0].ToString();
-                    SalidadeDatos[1] = LectordeDatos[1].ToString();
+                    SalidadeDatos[i] = LectordeDatos[i].ToString();
                 }
+                do
+                {
+                    if (LectordeDatos[10].ToString().Substring(0,9) == DateTime.Now.ToString("d/MM/yyyy"))
+                    {
+                        SalidadeDatos[10] = LectordeDatos[10].ToString();
+                        break;
+                    }
+                } while (LectordeDatos.Read());
             }
             else
             {
-                Console.WriteLine("Ha ocurriod un error inesperado");
+                MessageBox.Show("Ha ocurriod un error inesperado");
                 Enabled = false;
                 return null;
             }
@@ -293,12 +510,12 @@ namespace GrupoDePoblacion
             return SalidadeDatos;
         }
 
-        private Boolean EnviaraBasedeDatos( string grupodepoblacion, double imc)
+        private Boolean EnviaraBasedeDatos(string grupodepoblacion, double imc)
         {
             //Declaración de variables
-            string fecha = DateTime.Now.ToString("h:mm:ss");
+            string fecha = DateTime.Now.ToString("dd-MM-yyyy h:mm:ss");
             if (usuario == null)
-                usuario = "Juan";
+                MessageBox.Show("Error");
             Boolean salida = false;
 
             // Direccion de la Base de Datos
@@ -312,8 +529,8 @@ namespace GrupoDePoblacion
 
             // crear la consulta (Query)
             string ConsultaQuery = "INSERT INTO Perfil "
-                + " (usuario, edad, peso, altura, leciones, [grupo sanguineo], enfermedades, discapacidades, [grupo de poblacion], imc, fecha)"
-                + " VALUES (@usuario, @edad, @peso, @altura, @leciones, @grupoSanguineo, @enfermedades," + " @discapacidades, @grupodepoblacion, @imc, @fecha)";
+                + " (usuario, edad, peso, altura, genero, leciones, [grupo sanguineo], enfermedades, discapacidades, [grupo de poblacion], imc, fecha)"
+                + " VALUES (@usuario, @edad, @peso, @altura, @genero, @leciones, @grupoSanguineo, @enfermedades," + " @discapacidades, @grupodepoblacion, @imc, @fecha)";
 
             // crear un objecto comando para efectuar la consulta//*/
             OleDbCommand Comando = new OleDbCommand(ConsultaQuery, Conexion);
@@ -322,6 +539,7 @@ namespace GrupoDePoblacion
             Comando.Parameters.AddWithValue("@edad", edad);
             Comando.Parameters.AddWithValue("@peso", peso);
             Comando.Parameters.AddWithValue("@altura", altura);
+            Comando.Parameters.AddWithValue("@genero",genero);
             Comando.Parameters.AddWithValue("@leciones", leciones);
             Comando.Parameters.AddWithValue("@grupoSanguineo", grupoSanguineo);
             Comando.Parameters.AddWithValue("@enfermedades", enfermedades);
@@ -330,7 +548,7 @@ namespace GrupoDePoblacion
             Comando.Parameters.AddWithValue("@imc", imc);
             Comando.Parameters.AddWithValue("@fecha", fecha);//*/
 
-            //
+            // validar datos
             switch (Comando.ExecuteNonQuery())
             {
                 case 0:
