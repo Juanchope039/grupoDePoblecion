@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GrupoDePoblacion.exe" size="245192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GrupoDePoblacion.exe" size="247240">
       <assemblyIdentity name="GrupoDePoblacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2XyMDbar1iEQz/MO4pttmexf22BmI7i49ne8tX+3kXo=</dsig:DigestValue>
+        <dsig:DigestValue>gp8P+QHyAEuhiHe78q8JkYfz6rz9+/260ZsMIoEjB+A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

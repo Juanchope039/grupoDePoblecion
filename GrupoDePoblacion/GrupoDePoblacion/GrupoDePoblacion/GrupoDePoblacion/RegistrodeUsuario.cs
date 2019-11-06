@@ -63,9 +63,12 @@ namespace GrupoDePoblacion
             }
             else
             {
-                RegistraNuevoUsuario();
-                Close();
+                if (CargarRegistrodeDatos())
+                    CrearNuevoUsuario();
+                else
+                    MessageBox.Show("registro fallido, profavor intente más tarde.");                RegistraNuevoUsuario();
             }            
+            Close();
         }
 
         private void RegistraNuevoUsuario()
@@ -86,11 +89,15 @@ namespace GrupoDePoblacion
             Hide();
             RegistrodeDatos RegistrarDatos = new RegistrodeDatos(usuario,false);
             RegistrarDatos.ShowDialog();
-            nombre = RegistrarDatos.ObtenerNombre();
-            apellido = RegistrarDatos.ObtenerApellido();
-            RegistrarDatos.Close();
-            Show();
-            return !(nombre == null || apellido == null);
+            if ()
+            {
+                nombre = RegistrarDatos.ObtenerNombre();
+                apellido = RegistrarDatos.ObtenerApellido();
+                RegistrarDatos.Close();
+                Show();
+                return !(nombre == null || apellido == null);
+            }
+            return false;
         }
 
         public void salirDeLaAplicacion()

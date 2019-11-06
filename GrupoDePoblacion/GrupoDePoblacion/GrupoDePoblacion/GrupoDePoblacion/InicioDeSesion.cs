@@ -30,6 +30,8 @@ namespace GrupoDePoblacion
             this.usuario = null;
             Hide();
             MostrarRegistrarUsuario();
+            contador = 0;
+            Show();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -176,8 +178,14 @@ namespace GrupoDePoblacion
             {
                 //Mostrar Formulario Siguiente
                 RegistrodeDatos RegistrodeDatos = new RegistrodeDatos(usuario,true);
-
-                RegistrodeDatos.ShowDialog();
+                if (RegistrodeDatos.fecha.ToString().Contains(DateTime.Now.ToString("d/MM/yyyy")))
+                {
+                    MessageBox.Show("Bienveni@... este es el menu entre comillas jajaja");
+                }
+                else
+                {
+                    RegistrodeDatos.ShowDialog();
+                }            
 
                 //Cerrar Formulario siguiente
                 RegistrodeDatos.Close();

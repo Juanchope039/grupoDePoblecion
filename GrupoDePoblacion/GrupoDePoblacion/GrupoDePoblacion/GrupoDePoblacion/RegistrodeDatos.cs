@@ -7,7 +7,8 @@ namespace GrupoDePoblacion
 {
     public partial class RegistrodeDatos : Form
     {
-        string usuario, nombre, apellido, leciones, grupoSanguineo, enfermedades, discapacidades, fecha;
+        public string fecha;
+        string usuario, nombre, apellido, leciones, grupoSanguineo, enfermedades, discapacidades;
         int edad;
         char genero = ' ';
         double peso, altura;
@@ -28,6 +29,7 @@ namespace GrupoDePoblacion
             if (actualizacion)
             {
                 btn_salir.Visible = true;
+                btn_atras.Visible = true;
                 CargarCajasDeTexto();
                 if (genero=='M')
                 {
@@ -42,11 +44,6 @@ namespace GrupoDePoblacion
                     MessageBox.Show("Ha ocurrido un error.");
                     Close();
                 }
-                if (fecha.ToString().Substring(0, 9) == DateTime.Now.ToString("d/MM/yyyy").ToString())
-                {
-                    MostrarMenu();
-                }
-
             }
         }
 
@@ -91,8 +88,13 @@ namespace GrupoDePoblacion
                 grupodepoblacion = grupopoblacion(edad, grupodepoblacion);
                 IMC = CalcularIMC(peso, altura);
 
+                Boolean RegistroGuardado = EnviaraBasedeDatos(grupodepoblacion, IMC);//Enviar a base de datos
+                if (RegistroGuardado && actualizacion)
+                {
+                    MostrarMenu();
+                }
+
                 //metodos                
-                EnviaraBasedeDatos(grupodepoblacion, IMC);//Enviar a base de datos
                 GuardarAutoCompletado();
                 Close();
             }            
@@ -250,6 +252,7 @@ namespace GrupoDePoblacion
             else if (int.Parse(txt_edad.Text) < 10)
             {
                 MessageBox.Show("La edad minima aceptada es de 10 años");
+                txt_edad.Focus();
             }
             //*/
         }
@@ -260,7 +263,7 @@ namespace GrupoDePoblacion
             {
                 MessageBox.Show("El campo no puede estar vacio.");
                 txt_peso.Focus();
-            }//*/
+            }
         }
 
         private void txt_altura_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -310,8 +313,18 @@ namespace GrupoDePoblacion
 
         private void txt_peso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Boolean punto = ! txt_peso.Text.Contains(".");
-            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
+            Boolean punto = ! txt_peso.Text.Contains(".");//controlar mas de dos caracteres despues del punto
+            if (double.Parse(txt_peso.Text + e.KeyChar) < 0)
+            {
+                MessageBox.Show("El peso no puede ser negativo.");
+                e.Handled = true;
+            }
+            else if (double.Parse(txt_peso.Text + e.KeyChar) > 250)
+            {
+                MessageBox.Show("Ha exedido el peso permitido por la aplicación.");
+                e.Handled = true;
+            }
+            else if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -329,7 +342,17 @@ namespace GrupoDePoblacion
         private void txt_altura_KeyPress(object sender, KeyPressEventArgs e)
         {
             Boolean punto = txt_altura.Text.Contains(".");
-            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | !(e.KeyChar == 46 & punto))
+            if (double.Parse(txt_altura.Text + e.KeyChar) < 0)
+            {
+                MessageBox.Show("La altura no puede ser negativo.");
+                e.Handled = true;
+            }
+            else if (double.Parse(txt_altura.Text + e.KeyChar) > 2.5)
+            {
+                MessageBox.Show("Ha exedido la altura permitido por la aplicación.");
+                e.Handled = true;
+            }
+            else if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == '.' & punto))
             {
                 e.Handled = false;
             }
@@ -342,8 +365,14 @@ namespace GrupoDePoblacion
 
         private void btn_salir_Click(object sender, EventArgs e)
         {
+            salirDeLaAplicacion();
+        }
+
+        private void btn_atras_Click_1(object sender, EventArgs e)
+        {
             Close();
         }
+
 
         /// <summary>
         /// Hace una verificacion en busca de variables vacias y las inicializa
@@ -386,6 +415,48 @@ namespace GrupoDePoblacion
                 // mostrar formulario
                 Show();
             }//*/
+        }
+        private void txt_apellido_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txt_nombre.TextLength > 30)
+            {
+                MessageBox.Show("Maximo deben haber 30 caracteres");
+                txt_nombre.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txt_apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txt_apellido.TextLength > 30)
+            {
+                MessageBox.Show("Maximo deben haber 30 caracteres.");
+                txt_apellido.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txt_nombre_Leave_1(object sender, EventArgs e)
+        {
+            if (txt_nombre.TextLength < 3)
+            {
+                MessageBox.Show("minimo deben haber 3 caracteres");
+                txt_nombre.Focus();
+            }
+        }
+
+        private void txt_apellido_Leave_1(object sender, EventArgs e)
+        {
+            if (txt_apellido.TextLength < 8)
+            {
+                MessageBox.Show("Minimo deben haber 8 caracteres.");
+                txt_apellido.Focus();
+            }
         }
 
         /// <summary>
@@ -440,7 +511,7 @@ namespace GrupoDePoblacion
 
         private void MostrarMenu()
         {
-            MessageBox.Show("Bienvenid@..");
+            MessageBox.Show("Bienveni@... este es el menu entre comillas jajaja");
         }
 
         private string[] CargarDatos()
@@ -486,9 +557,10 @@ namespace GrupoDePoblacion
                 {
                     SalidadeDatos[i] = LectordeDatos[i].ToString();
                 }
+                SalidadeDatos[10]= "                ";
                 do
                 {
-                    if (LectordeDatos[10].ToString().Substring(0,9) == DateTime.Now.ToString("d/MM/yyyy"))
+                    if (LectordeDatos[10].ToString().Contains(DateTime.Now.ToString("d/MM/yyyy")))
                     {
                         SalidadeDatos[10] = LectordeDatos[10].ToString();
                         break;

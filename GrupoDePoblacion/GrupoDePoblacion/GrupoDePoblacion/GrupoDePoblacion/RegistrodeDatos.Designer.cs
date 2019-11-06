@@ -55,6 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_salir = new System.Windows.Forms.Button();
+            this.btn_atras = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             this.btLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btLimpiar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btLimpiar.Location = new System.Drawing.Point(312, 188);
+            this.btLimpiar.Location = new System.Drawing.Point(412, 190);
             this.btLimpiar.Name = "btLimpiar";
             this.btLimpiar.Size = new System.Drawing.Size(90, 26);
             this.btLimpiar.TabIndex = 3;
@@ -75,7 +76,7 @@
             // 
             this.btProcesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btProcesar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btProcesar.Location = new System.Drawing.Point(612, 188);
+            this.btProcesar.Location = new System.Drawing.Point(612, 190);
             this.btProcesar.Name = "btProcesar";
             this.btProcesar.Size = new System.Drawing.Size(90, 26);
             this.btProcesar.TabIndex = 2;
@@ -111,6 +112,8 @@
             this.txt_apellido.Size = new System.Drawing.Size(121, 25);
             this.txt_apellido.TabIndex = 3;
             this.txt_apellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_apellido_KeyPress);
+            this.txt_apellido.Leave += new System.EventHandler(this.txt_apellido_Leave_1);
             this.txt_apellido.Validating += new System.ComponentModel.CancelEventHandler(this.txt_apellido_Validating);
             // 
             // label11
@@ -170,6 +173,8 @@
             this.txt_nombre.Size = new System.Drawing.Size(121, 25);
             this.txt_nombre.TabIndex = 1;
             this.txt_nombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombre_KeyPress);
+            this.txt_nombre.Leave += new System.EventHandler(this.txt_nombre_Leave_1);
             this.txt_nombre.Validating += new System.ComponentModel.CancelEventHandler(this.txt_nombre_Validating);
             // 
             // groupBox2
@@ -353,6 +358,19 @@
             this.btn_salir.Visible = false;
             this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
+            // btn_atras
+            // 
+            this.btn_atras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_atras.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.btn_atras.Location = new System.Drawing.Point(212, 190);
+            this.btn_atras.Name = "btn_atras";
+            this.btn_atras.Size = new System.Drawing.Size(90, 26);
+            this.btn_atras.TabIndex = 14;
+            this.btn_atras.Text = "Atras";
+            this.btn_atras.UseVisualStyleBackColor = true;
+            this.btn_atras.Visible = false;
+            this.btn_atras.Click += new System.EventHandler(this.btn_atras_Click_1);
+            // 
             // RegistrodeDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +379,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(717, 223);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_atras);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -407,6 +426,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_salir;
+        private System.Windows.Forms.Button btn_atras;
     }
 }
 
