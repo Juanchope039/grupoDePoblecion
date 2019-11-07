@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="GrupoDePoblacion.exe" version="1.0.0.1" publicKeyToken="39f24f4ed10753bf" language="es-CO" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="2ad1623f-74ad-4a9c-a546-fa74242ca53f.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="GrupoDePoblacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="GrupoDePoblacion.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opciones del manifiesto de Control de cuentas de usuario
+          Si quiere cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
+          nodo requestedExecutionLevel por alguno de los siguientes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si desea usar la virtualización de archivos y del Registro para la
+         compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GrupoDePoblacion.exe" size="384968">
+      <assemblyIdentity name="GrupoDePoblacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>f90RiD9yj4e0ibFvh9+w3tjPqId+kDDVITMJFoDBwhU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="2ad1623f-74ad-4a9c-a546-fa74242ca53f.ico" size="33126">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>m3vd3892CCUHPjpzRxucDjZ9GGq9rraEEjLSDql9hLU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Clientes.mdb" size="602112" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>FXWjt71SBppdyUiSbZd7Cnezk7OxoCD8XwtjRnl95Xs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="GrupoDePoblacion.exe.config" size="523">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>qk5S5l3zIC7Kk7el3zM832LLMS0bEwMEs14g+AbO7KM=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=JUANCHOPE-PC\ASUS" issuerKeyHash="1dcbcdb16cd3f07b14ebe25085c1ceb54081cb61" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>zM3+vfcVfUWpd/XIC5Mj+NJJvFXV4bxRUOt6/6Kb6M4=</DigestValue></Reference></SignedInfo><SignatureValue>Bez87z3JO2MaC8HjJ9+tR7dWgScJtgSghFpaDLPXeXnB9mCKfP75xvkSEND1SEqAcnjF0YDNgqR9yJuZRK4KHMDgSfEw5broGTPUfS64qujxq5fzy5INMW+jeCykGeaC55r50huFugZn8Wosg4PzEzbXUoi4+9tTHD5KnaPTaRQ=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>zDoQA0x5x7zQInkBRUrRrYO86vLEWNrlp0r3t1SMV1f3dG6+H8vi8ANKeTKZRo5iuy4PniCUPEcqr1lB3wOqcs56c4tGEEMdL0aM1KV6vqLK9nEe13kaPjjbItGyhMGGTDyPq9QRby5+hJKNYHwYgM4i9QiFgrDoe+dd/ijR8+U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="cee89ba2ff7aeb5051bce1d555bc49d2f823930bc8f577a9457d15f7bdfecdcc" Description="" Url=""><as:assemblyIdentity name="GrupoDePoblacion.exe" version="1.0.0.1" publicKeyToken="39f24f4ed10753bf" language="es-CO" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=JUANCHOPE-PC\ASUS</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Hv+t4JvjNK6lWGd6rKgBwfHnJXJe1VLvYi3D1m0DE/o=</DigestValue></Reference></SignedInfo><SignatureValue>a3cezEGlay8zqdcXtdX8BBEujRKfBXakXexBnVrivKIsBQvdb0Hlj6zEkelK262kQZfWhR+/TmE/bumBFcV+RAO+J5fXqsOLYwT6DOcTKNi0NNaAYJ8v9cz4rIegxxkWHmsIQR8FP6BX8yD2hVHmzhOAmuivRxFoqhB0tKapovc=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>zDoQA0x5x7zQInkBRUrRrYO86vLEWNrlp0r3t1SMV1f3dG6+H8vi8ANKeTKZRo5iuy4PniCUPEcqr1lB3wOqcs56c4tGEEMdL0aM1KV6vqLK9nEe13kaPjjbItGyhMGGTDyPq9QRby5+hJKNYHwYgM4i9QiFgrDoe+dd/ijR8+U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB3TCCAUagAwIBAgIQIANlH7cTsKNCAkMXVc7mOzANBgkqhkiG9w0BAQsFADAtMSswKQYDVQQDHiIASgBVAEEATgBDAEgATwBQAEUALQBQAEMAXABBAFMAVQBTMB4XDTE5MTEwMjE3MjMyNloXDTIwMTEwMTIzMjMyNlowLTErMCkGA1UEAx4iAEoAVQBBAE4AQwBIAE8AUABFAC0AUABDAFwAQQBTAFUAUzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAzDoQA0x5x7zQInkBRUrRrYO86vLEWNrlp0r3t1SMV1f3dG6+H8vi8ANKeTKZRo5iuy4PniCUPEcqr1lB3wOqcs56c4tGEEMdL0aM1KV6vqLK9nEe13kaPjjbItGyhMGGTDyPq9QRby5+hJKNYHwYgM4i9QiFgrDoe+dd/ijR8+UCAwEAATANBgkqhkiG9w0BAQsFAAOBgQC1jVXCdqjfJix4MHtGaCELlC9HUjWt9WWpn1dXQzHv38iwMKwehy5mM9R1WecZUAzgMUpkiBKWdxlRHE8Ls6iT+Bk3B9qMXDHAgyNrWF++L91+528EfARj/ueRmXyjV7MFBMu5QTNkFSTZI33iSitrr9jAvaNViMW7tWqip/fZKQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

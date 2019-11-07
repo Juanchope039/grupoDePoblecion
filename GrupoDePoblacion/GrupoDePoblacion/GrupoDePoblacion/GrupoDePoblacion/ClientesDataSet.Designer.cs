@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace GrupoDePoblacion {
+namespace PowerFit {
     
     
     /// <summary>
@@ -1634,7 +1634,7 @@ namespace GrupoDePoblacion {
         }
     }
 }
-namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
+namespace PowerFit.ClientesDataSetTableAdapters {
     
     
     /// <summary>
@@ -1809,7 +1809,7 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::GrupoDePoblacion.Properties.Settings.Default.ClientesConnectionString;
+            this._connection.ConnectionString = global::PowerFit.Properties.Settings.Default.ClientesConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2282,7 +2282,7 @@ namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = global::GrupoDePoblacion.Properties.Settings.Default.ClientesConnectionString;
+            this._connection.ConnectionString = global::PowerFit.Properties.Settings.Default.ClientesConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

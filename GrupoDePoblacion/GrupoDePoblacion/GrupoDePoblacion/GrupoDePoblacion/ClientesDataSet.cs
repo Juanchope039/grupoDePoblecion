@@ -1,4 +1,4 @@
-﻿namespace GrupoDePoblacion
+﻿namespace PowerFit
 {
 
 
@@ -7,9 +7,11 @@
     }
 }
 
-namespace GrupoDePoblacion.ClientesDataSetTableAdapters {
-    
-    
-    public partial class PerfilTableAdapter {
+namespace PowerFit.ClientesDataSetTableAdapters
+{
+
+
+    public partial class PerfilTableAdapter
+    {
     }
 }

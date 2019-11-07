@@ -134,7 +134,7 @@ namespace GrupoDePoblacion
         private Boolean ValidarUsuario(string usuario, string contrasena)
         {
             // Direccion de la Base de Datos
-            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -218,7 +218,8 @@ namespace GrupoDePoblacion
 
         private void btn_pregunta_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ayuda","Instrucciones",MessageBoxButtons.OK,MessageBoxIcon.Question);
+            MessageBox.Show("-Porfavor ingrese su nombre de usuario y contraseña, para iniciar seción. si no tiene un usuario porfavor de clic en 'Registrarse'."
+                ,"Instrucciones",MessageBoxButtons.OK,MessageBoxIcon.Question);
         }
     }
 }

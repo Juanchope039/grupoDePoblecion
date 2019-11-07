@@ -66,9 +66,10 @@ namespace GrupoDePoblacion
                 if (CargarRegistrodeDatos())
                     CrearNuevoUsuario();
                 else
-                    MessageBox.Show("registro fallido, profavor intente más tarde.");                RegistraNuevoUsuario();
+                    MessageBox.Show("registro fallido, profavor intente más tarde.");                
+                //RegistraNuevoUsuario();
+                Close();
             }            
-            Close();
         }
 
         private void RegistraNuevoUsuario()
@@ -89,15 +90,15 @@ namespace GrupoDePoblacion
             Hide();
             RegistrodeDatos RegistrarDatos = new RegistrodeDatos(usuario,false);
             RegistrarDatos.ShowDialog();
-            if ()
-            {
+            //if (!RegistrarDatos.salir)//
+            //{
                 nombre = RegistrarDatos.ObtenerNombre();
                 apellido = RegistrarDatos.ObtenerApellido();
                 RegistrarDatos.Close();
                 Show();
                 return !(nombre == null || apellido == null);
-            }
-            return false;
+            //}
+            //return false;
         }
 
         public void salirDeLaAplicacion()
@@ -146,16 +147,18 @@ namespace GrupoDePoblacion
         private void txt_correo_Leave(object sender, EventArgs e)
         {
             correo = null;
-            if (txt_correo.TextLength != 0 && txt_correo.TextLength <= 25 && txt_correo.Text.Contains('@'))
+            if (txt_correo.TextLength != 0 && txt_correo.TextLength <= 25)
                 correo = txt_correo.Text;
             else 
             {
-                if (txt_correo.TextLength == 0)
-                    MessageBox.Show("El correo vacio");
+                if (!txt_correo.Text.Contains("@") & txt_correo.TextLength != 0)
+                    MessageBox.Show("Debe ingresar porlomenos un '@'");
+                else if (txt_correo.TextLength < 8 & txt_correo.TextLength != 0)
+                {
+                    MessageBox.Show("");
+                }
                 else if (txt_correo.TextLength > 25)
-                    MessageBox.Show("El correo mayo a 25 caracteres");
-                else if (!txt_correo.Text.Contains('@'))
-                    MessageBox.Show("El correo no contiene '@'");
+                    MessageBox.Show("El correo no debe ser mayor a 25 caracteres");
                 txt_correo.Focus();
             }
         }
@@ -164,17 +167,32 @@ namespace GrupoDePoblacion
         {
             usuario = "";
             if (txt_usuario.TextLength != 0 && txt_usuario.TextLength <= 25)
-                usuario = txt_usuario.Text;
+            { 
+                if (ValidarexistenciadeUsuario())
+                {
+                    MessageBox.Show("Usuario " + txt_usuario.Text + " ya existe");
+                    txt_usuario.Focus();
+                }
+                else
+                    usuario = txt_usuario.Text;
+            }
             else
             {
-                if (txt_usuario.Text == "")
-                    MessageBox.Show("Usuario vacio");
-                else if (txt_usuario.Text.Length > 25)
+                if (txt_usuario.Text.Length > 25)
                     MessageBox.Show("El usuario debe contener menos de 25 caracteres");
-                else if (ValidarexistenciadeUsuario())
-                    MessageBox.Show("Usuario " + txt_usuario.Text + " ya existe");
-                txt_usuario.Focus();
             }
+        }
+
+        private void btn_pregunta_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(""
+                , "Instrucciones", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void btn_pregunta_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("para registrarse, ingrese los datos requeridos en los campos en blanco y dar click en el boton \"siguiente\"."
+                , "Instrucciones", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void txt_contrasena2_Leave(object sender, EventArgs e)
@@ -184,12 +202,10 @@ namespace GrupoDePoblacion
                 contrasena = txt_contrasena1.Text;
             else
             {
-                if (txt_contrasena1.TextLength == 0 || txt_contrasena2.TextLength == 0)
-                    MessageBox.Show("Caja(s) de cotraseña vacia(s)");
-                else if (txt_contrasena1.Text != txt_contrasena2.Text)
+                if (txt_contrasena1.Text != txt_contrasena2.Text)
                     MessageBox.Show("Contraseñas no coinciden");
                 else if (txt_contrasena1.TextLength > 20 || txt_contrasena2.TextLength > 20)
-                    MessageBox.Show("Contraseña mayor a 20 caracteres");
+                    MessageBox.Show("La contraseña debe ser menor a 20 caracteres");
                 txt_contrasena1.Focus();
             }
         }
@@ -204,7 +220,7 @@ namespace GrupoDePoblacion
             Boolean salida = false;
 
             // Direccion de la Base de Datos
-            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -257,7 +273,7 @@ namespace GrupoDePoblacion
         private bool ValidarexistenciadeUsuario()
         {
             // Direccion de la Base de Datos
-            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -275,7 +291,7 @@ namespace GrupoDePoblacion
             OleDbCommand Comando = new OleDbCommand(ConsultaQuery, Conexion);
 
             // agregar entradas a la consulta
-            Comando.Parameters.AddWithValue("@usuario", usuario);
+            Comando.Parameters.AddWithValue("@usuario", txt_usuario.Text);
 
             // Variable de lectura de datos
             OleDbDataReader LectordeDatos;

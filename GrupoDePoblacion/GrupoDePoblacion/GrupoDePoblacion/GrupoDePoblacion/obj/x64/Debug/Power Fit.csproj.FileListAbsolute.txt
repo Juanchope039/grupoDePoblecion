@@ -1,0 +1,16 @@
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\Clientes.mdb
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\Power Fit.csprojAssemblyReference.cache
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.RegistrodeDatos.resources
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.InicioDeSesion.resources
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\GrupoDePoblacion.RegistrodeUsuario.resources
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\Power Fit.csproj.GenerateResource.cache
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.Properties.Resources.resources
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\PowerFit.exe.config
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\PowerFit.exe.manifest
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\PowerFit.application
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\PowerFit.exe
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\bin\x64\Debug\PowerFit.pdb
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.exe.manifest
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.application
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.exe
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.pdb

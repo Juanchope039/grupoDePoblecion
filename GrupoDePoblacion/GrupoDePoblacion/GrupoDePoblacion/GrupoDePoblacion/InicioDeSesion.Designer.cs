@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioDeSesion));
             this.ckb_mo_contrasena = new System.Windows.Forms.CheckBox();
             this.btn_salir = new System.Windows.Forms.Button();
             this.btn_Registrarse = new System.Windows.Forms.Button();
@@ -42,12 +43,14 @@
             // ckb_mo_contrasena
             // 
             this.ckb_mo_contrasena.AutoSize = true;
+            this.ckb_mo_contrasena.BackColor = System.Drawing.Color.Transparent;
+            this.ckb_mo_contrasena.ForeColor = System.Drawing.Color.White;
             this.ckb_mo_contrasena.Location = new System.Drawing.Point(106, 92);
             this.ckb_mo_contrasena.Name = "ckb_mo_contrasena";
             this.ckb_mo_contrasena.Size = new System.Drawing.Size(118, 17);
             this.ckb_mo_contrasena.TabIndex = 17;
             this.ckb_mo_contrasena.Text = "Mostrar Contraseña";
-            this.ckb_mo_contrasena.UseVisualStyleBackColor = true;
+            this.ckb_mo_contrasena.UseVisualStyleBackColor = false;
             this.ckb_mo_contrasena.CheckedChanged += new System.EventHandler(this.Ckb_mo_contrasena_CheckedChanged);
             // 
             // btn_salir
@@ -116,7 +119,7 @@
             // btn_pregunta
             // 
             this.btn_pregunta.BackColor = System.Drawing.Color.Transparent;
-            this.btn_pregunta.BackgroundImage = global::GrupoDePoblacion.Properties.Resources.pregunta;
+            this.btn_pregunta.BackgroundImage = global::PowerFit.Properties.Resources.pregunta;
             this.btn_pregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_pregunta.Location = new System.Drawing.Point(243, 12);
             this.btn_pregunta.Name = "btn_pregunta";
@@ -129,6 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::PowerFit.Properties.Resources.descarga__4_;
             this.ClientSize = new System.Drawing.Size(280, 156);
             this.ControlBox = false;
             this.Controls.Add(this.btn_pregunta);
@@ -140,9 +144,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_usuario);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InicioDeSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "                                  InicioDeSesion";
+            this.Text = "                                  Inicio de sesion";
             this.ResumeLayout(false);
             this.PerformLayout();
 

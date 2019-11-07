@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrodeUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.txt_usuario = new System.Windows.Forms.TextBox();
             this.txt_correo = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_atras = new System.Windows.Forms.Button();
             this.btn_siguiente = new System.Windows.Forms.Button();
+            this.btn_pregunta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -154,12 +156,27 @@
             this.btn_siguiente.UseVisualStyleBackColor = true;
             this.btn_siguiente.Click += new System.EventHandler(this.Btn_siguiente_Click);
             // 
+            // btn_pregunta
+            // 
+            this.btn_pregunta.BackColor = System.Drawing.Color.Transparent;
+            this.btn_pregunta.BackgroundImage = global::PowerFit.Properties.Resources.pregunta;
+            this.btn_pregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_pregunta.Location = new System.Drawing.Point(426, 4);
+            this.btn_pregunta.Name = "btn_pregunta";
+            this.btn_pregunta.Size = new System.Drawing.Size(25, 25);
+            this.btn_pregunta.TabIndex = 19;
+            this.btn_pregunta.UseVisualStyleBackColor = false;
+            this.btn_pregunta.Click += new System.EventHandler(this.btn_pregunta_Click_1);
+            // 
             // RegistrodeUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::PowerFit.Properties.Resources.descarga__1_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(455, 105);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_pregunta);
             this.Controls.Add(this.btn_siguiente);
             this.Controls.Add(this.btn_atras);
             this.Controls.Add(this.btn_limpiar);
@@ -172,6 +189,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_usuario);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrodeUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "                                                 Registro de Usuario";
@@ -194,5 +212,6 @@
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_atras;
         private System.Windows.Forms.Button btn_siguiente;
+        private System.Windows.Forms.Button btn_pregunta;
     }
 }

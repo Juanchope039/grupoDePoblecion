@@ -13,6 +13,7 @@ namespace GrupoDePoblacion
         char genero = ' ';
         double peso, altura;
         Boolean actualizacion = false;
+        public Boolean salir = false;
 
         public RegistrodeDatos()
         {
@@ -45,11 +46,6 @@ namespace GrupoDePoblacion
                     Close();
                 }
             }
-        }
-
-        private void btSalir_Click(object sender, EventArgs e)
-        {
-            salirDeLaAplicacion();
         }
 
         private void btLimpiar_Click(object sender, EventArgs e)
@@ -91,6 +87,7 @@ namespace GrupoDePoblacion
                 Boolean RegistroGuardado = EnviaraBasedeDatos(grupodepoblacion, IMC);//Enviar a base de datos
                 if (RegistroGuardado && actualizacion)
                 {
+                    Hide();
                     MostrarMenu();
                 }
 
@@ -124,29 +121,24 @@ namespace GrupoDePoblacion
         private void GuardarAutoCompletado()
         {
             // Validar no repeticion antes de guardar
-            if (!Properties.Settings.Default.Lecciones.Contains(leciones))
-                Properties.Settings.Default.Lecciones.Add(leciones);
+            if (!PowerFit.Properties.Settings.Default.Lecciones.Contains(leciones))
+                PowerFit.Properties.Settings.Default.Lecciones.Add(leciones);
 
-            if (!Properties.Settings.Default.GrupoSanguineo.Contains(grupoSanguineo))
-                Properties.Settings.Default.GrupoSanguineo.Add(grupoSanguineo);
+            if (!PowerFit.Properties.Settings.Default.GrupoSanguineo.Contains(grupoSanguineo))
+                PowerFit.Properties.Settings.Default.GrupoSanguineo.Add(grupoSanguineo);
 
-            if (!Properties.Settings.Default.Enfermedades.Contains(enfermedades))
-                Properties.Settings.Default.Enfermedades.Add(enfermedades);
+            if (!PowerFit.Properties.Settings.Default.Enfermedades.Contains(enfermedades))
+                PowerFit.Properties.Settings.Default.Enfermedades.Add(enfermedades);
 
-            if (!Properties.Settings.Default.Discapacidades.Contains(discapacidades))
-                Properties.Settings.Default.Discapacidades.Add(discapacidades);
+            if (!PowerFit.Properties.Settings.Default.Discapacidades.Contains(discapacidades))
+                PowerFit.Properties.Settings.Default.Discapacidades.Add(discapacidades);
 
-            Properties.Settings.Default.Save();
+            PowerFit.Properties.Settings.Default.Save();
         }
 
         private double CalcularIMC(double peso, double altura)
         {
             return peso / (altura * altura);
-        }
-
-        private void Btn_atras_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private string grupopoblacion(int Edad, string grupodepoblacion)
@@ -173,10 +165,10 @@ namespace GrupoDePoblacion
 
         private void CargarAutoCompletado()
         {
-            txt_leciones.AutoCompleteCustomSource = Autocompletar(Properties.Settings.Default.Lecciones);
-            txt_grupoSanguineo.AutoCompleteCustomSource = Autocompletar(Properties.Settings.Default.GrupoSanguineo);
-            txt_enfermedades.AutoCompleteCustomSource = Autocompletar(Properties.Settings.Default.Enfermedades);
-            txt_discapacidades.AutoCompleteCustomSource = Autocompletar(Properties.Settings.Default.Discapacidades);
+            txt_leciones.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.Lecciones);
+            txt_grupoSanguineo.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.GrupoSanguineo);
+            txt_enfermedades.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.Enfermedades);
+            txt_discapacidades.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.Discapacidades);
         }
 
         private AutoCompleteStringCollection Autocompletar(StringCollection lista)
@@ -205,20 +197,27 @@ namespace GrupoDePoblacion
             txt_discapacidades.Clear();
         }
 
-        private void txt_nombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_nombre.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_nombre.Focus();
-            }//*/
-        }
-
         private void txt_edad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
             {
-                e.Handled = false;
+                if (txt_edad.Text != "" && e.KeyChar != '\b')
+                {
+                    string al = txt_edad.Text + e.KeyChar;
+                    int edad = int.Parse(al);
+                    if (edad < 0)
+                    {
+                        MessageBox.Show("La edad no puede ser negativa.");
+                        e.Handled = true;
+                    }
+                    else if (edad > 150)
+                    {
+                        MessageBox.Show("La edad no puede ser mayor a 150 años.");
+                        e.Handled = true;
+                    }
+                    else
+                        e.Handled = false;
+                }
             }
             else
             {
@@ -227,138 +226,58 @@ namespace GrupoDePoblacion
             }
         }
 
-        private void txt_apellido_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_apellido.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_apellido.Focus();
-
-            }//*/
-        }
-    
-        private void txt_edad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_edad.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_edad.Focus();
-            }
-            else if (int.Parse(txt_edad.Text) > 150)
-            {
-                MessageBox.Show("La edad maxima aceptada es 150 años");
-                txt_edad.Focus();
-            }
-            else if (int.Parse(txt_edad.Text) < 10)
-            {
-                MessageBox.Show("La edad minima aceptada es de 10 años");
-                txt_edad.Focus();
-            }
-            //*/
-        }
-
-        private void txt_peso_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_peso.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_peso.Focus();
-            }
-        }
-
-        private void txt_altura_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_altura.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_altura.Focus();
-            }//*/
-        }
-
-        private void txt_leciones_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_leciones.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_leciones.Focus();
-            }//*/
-        }
-
-        private void txt_grupoSanguineo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_grupoSanguineo.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_grupoSanguineo.Focus();
-            }//*/
-        }
-
-        private void txt_enfermedades_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_enfermedades.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_enfermedades.Focus();
-            }//*/
-        }
-
-        private void txt_discapacidades_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (txt_discapacidades.TextLength == 0)
-            {
-                MessageBox.Show("El campo no puede estar vacio.");
-                txt_discapacidades.Focus();
-            }//*/
-        }
-
         private void txt_peso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Boolean punto = ! txt_peso.Text.Contains(".");//controlar mas de dos caracteres despues del punto
-            if (double.Parse(txt_peso.Text + e.KeyChar) < 0)
+            Boolean punto = ! txt_peso.Text.Contains(",");//controlar mas de dos caracteres despues del punto
+            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & punto))
             {
-                MessageBox.Show("El peso no puede ser negativo.");
-                e.Handled = true;
-            }
-            else if (double.Parse(txt_peso.Text + e.KeyChar) > 250)
-            {
-                MessageBox.Show("Ha exedido el peso permitido por la aplicación.");
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (e.KeyChar == '.' & punto)
-            {
-                e.Handled = false;
+                if (txt_peso.Text != "" && e.KeyChar != '\b')
+                {
+                    double peso= double.Parse(txt_peso.Text + e.KeyChar);
+                    if (peso < 0)
+                    {
+                        MessageBox.Show("El peso no puede ser negativo.");
+                        e.Handled = true;
+                    }
+                    else if (peso > 250)
+                    {
+                        MessageBox.Show("Ha exedido el peso permitido (250) por la aplicación.");
+                        e.Handled = true;
+                    }
+                    else
+                        e.Handled = false;
+                }
+                
             }
             else
             {
-                MessageBox.Show("no se aceptan digitos no numericos y solo un punto");
+                MessageBox.Show("no se aceptan digitos no numericos y solo una coma");
                 e.Handled = true;
             }
         }
 
         private void txt_altura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Boolean punto = txt_altura.Text.Contains(".");
-            if (double.Parse(txt_altura.Text + e.KeyChar) < 0)
+            e.Handled = false;
+            Boolean punto = txt_altura.Text.Contains(",");
+            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & !punto) | txt_altura.Text + e.KeyChar != ",")
             {
-                MessageBox.Show("La altura no puede ser negativo.");
-                e.Handled = true;
-            }
-            else if (double.Parse(txt_altura.Text + e.KeyChar) > 2.5)
-            {
-                MessageBox.Show("Ha exedido la altura permitido por la aplicación.");
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == '.' & punto))
-            {
-                e.Handled = false;
+                if (txt_altura.Text != "" & e.KeyChar !='\b')
+                {
+                    double altura = double.Parse(txt_altura.Text + e.KeyChar);
+                    if (altura < 0)
+                    {
+                        MessageBox.Show("La altura no puede ser negativo.");
+                        e.Handled = true;
+                    }else if (altura > 3)
+                    {
+                        MessageBox.Show("La altura no puede superar los 3 metros");
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("no se aceptan digitos no numericos y solo un punto");
+                MessageBox.Show("no se aceptan digitos no numericos y solo una coma");
                 e.Handled = true;
             }
         }
@@ -379,17 +298,17 @@ namespace GrupoDePoblacion
         /// </summary>
         private void test()
         {
-            if (Properties.Settings.Default.Lecciones == null)
-                Properties.Settings.Default.Lecciones = new StringCollection();
+            if (PowerFit.Properties.Settings.Default.Lecciones == null)
+                PowerFit.Properties.Settings.Default.Lecciones = new StringCollection();
 
-            if (Properties.Settings.Default.GrupoSanguineo == null)
-                Properties.Settings.Default.GrupoSanguineo = new StringCollection();
+            if (PowerFit.Properties.Settings.Default.GrupoSanguineo == null)
+                PowerFit.Properties.Settings.Default.GrupoSanguineo = new StringCollection();
 
-            if (Properties.Settings.Default.Enfermedades == null)
-                Properties.Settings.Default.Enfermedades = new StringCollection();
+            if (PowerFit.Properties.Settings.Default.Enfermedades == null)
+                PowerFit.Properties.Settings.Default.Enfermedades = new StringCollection();
 
-            if (Properties.Settings.Default.Discapacidades == null)
-                Properties.Settings.Default.Discapacidades = new StringCollection();
+            if (PowerFit.Properties.Settings.Default.Discapacidades == null)
+                PowerFit.Properties.Settings.Default.Discapacidades = new StringCollection();
         }
 
         /// <summary>
@@ -415,10 +334,6 @@ namespace GrupoDePoblacion
                 // mostrar formulario
                 Show();
             }//*/
-        }
-        private void txt_apellido_Leave(object sender, EventArgs e)
-        {
-            
         }
 
         private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -448,6 +363,12 @@ namespace GrupoDePoblacion
                 MessageBox.Show("minimo deben haber 3 caracteres");
                 txt_nombre.Focus();
             }
+        }
+
+        private void btn_pregunta_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("por favor llene los campos en blanco para poder completar su informacion personal."
+                , "Instrucciones", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void txt_apellido_Leave_1(object sender, EventArgs e)
@@ -520,7 +441,7 @@ namespace GrupoDePoblacion
             string[] SalidadeDatos;
 
             // Direccion de la Base de Datos
-            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -591,7 +512,7 @@ namespace GrupoDePoblacion
             Boolean salida = false;
 
             // Direccion de la Base de Datos
-            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
