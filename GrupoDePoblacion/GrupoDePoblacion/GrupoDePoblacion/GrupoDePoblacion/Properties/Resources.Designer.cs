@@ -63,69 +63,9 @@ namespace PowerFit.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap descarga {
+        internal static System.Drawing.Bitmap Panoramica_Gym {
             get {
-                object obj = ResourceManager.GetObject("descarga", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap descarga__1_ {
-            get {
-                object obj = ResourceManager.GetObject("descarga (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap descarga__2_ {
-            get {
-                object obj = ResourceManager.GetObject("descarga (2)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap descarga__3_ {
-            get {
-                object obj = ResourceManager.GetObject("descarga (3)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap descarga__4_ {
-            get {
-                object obj = ResourceManager.GetObject("descarga (4)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap images {
-            get {
-                object obj = ResourceManager.GetObject("images", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap images__1_ {
-            get {
-                object obj = ResourceManager.GetObject("images (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("Panoramica Gym", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +76,16 @@ namespace PowerFit.Properties {
         internal static System.Drawing.Bitmap pregunta {
             get {
                 object obj = ResourceManager.GetObject("pregunta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Textura {
+            get {
+                object obj = ResourceManager.GetObject("Textura", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

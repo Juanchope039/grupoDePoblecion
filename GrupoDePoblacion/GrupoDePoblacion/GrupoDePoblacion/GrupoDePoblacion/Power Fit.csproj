@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-CO</TargetCulture>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>GrupoDePoblacion.Program</StartupObject>
+    <StartupObject>PowerFit.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +59,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -107,10 +107,14 @@
   <PropertyGroup>
     <ApplicationIcon>PowerFit.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -122,6 +126,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrodeDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +161,15 @@
       <DependentUpon>RegistrodeUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="VerInforme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerInforme.Designer.cs">
+      <DependentUpon>VerInforme.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrodeDatos.resx">
       <DependentUpon>RegistrodeDatos.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +188,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrodeUsuario.resx">
       <DependentUpon>RegistrodeUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerInforme.resx">
+      <DependentUpon>VerInforme.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClientesDataSet.xsc">
       <DependentUpon>ClientesDataSet.xsd</DependentUpon>

@@ -1,4 +1,4 @@
-﻿namespace GrupoDePoblacion
+﻿namespace PowerFit
 {
     partial class InicioDeSesion
     {
@@ -106,6 +106,7 @@
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(100, 20);
             this.txt_usuario.TabIndex = 11;
+            this.txt_usuario.Tag = "Ingrese nombre de usuario";
             // 
             // label2
             // 
@@ -132,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PowerFit.Properties.Resources.descarga__4_;
+            this.BackgroundImage = global::PowerFit.Properties.Resources.Textura;
             this.ClientSize = new System.Drawing.Size(280, 156);
             this.ControlBox = false;
             this.Controls.Add(this.btn_pregunta);

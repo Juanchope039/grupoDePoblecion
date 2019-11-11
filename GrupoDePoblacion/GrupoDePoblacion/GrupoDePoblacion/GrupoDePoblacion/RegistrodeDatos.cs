@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace GrupoDePoblacion
+namespace PowerFit
 {
     public partial class RegistrodeDatos : Form
     {
@@ -30,7 +30,6 @@ namespace GrupoDePoblacion
             if (actualizacion)
             {
                 btn_salir.Visible = true;
-                btn_atras.Visible = true;
                 CargarCajasDeTexto();
                 if (genero=='M')
                 {
@@ -59,7 +58,7 @@ namespace GrupoDePoblacion
             {
                 //Declaracion
                 string grupodepoblacion = "";
-                double IMC = 0;
+                double IMC;
 
                 //Entradas
                 nombre = txt_nombre.Text;
@@ -84,16 +83,18 @@ namespace GrupoDePoblacion
                 grupodepoblacion = grupopoblacion(edad, grupodepoblacion);
                 IMC = CalcularIMC(peso, altura);
 
+                Hide();
                 Boolean RegistroGuardado = EnviaraBasedeDatos(grupodepoblacion, IMC);//Enviar a base de datos
                 if (RegistroGuardado && actualizacion)
                 {
-                    Hide();
                     MostrarMenu();
+                    Close();
                 }
+                else
+                    Close();
 
                 //metodos                
                 GuardarAutoCompletado();
-                Close();
             }            
         }
 
@@ -138,7 +139,8 @@ namespace GrupoDePoblacion
 
         private double CalcularIMC(double peso, double altura)
         {
-            return peso / (altura * altura);
+            string imc = (peso / (altura * altura)).ToString();
+            return double.Parse(imc.Substring(0,imc.IndexOf(',')+2));
         }
 
         private string grupopoblacion(int Edad, string grupodepoblacion)
@@ -231,7 +233,7 @@ namespace GrupoDePoblacion
             Boolean punto = ! txt_peso.Text.Contains(",");//controlar mas de dos caracteres despues del punto
             if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & punto))
             {
-                if (txt_peso.Text != "" && e.KeyChar != '\b')
+                if (txt_peso.Text != "" && e.KeyChar != '\b' & txt_peso.Text + e.KeyChar != ",")
                 {
                     double peso= double.Parse(txt_peso.Text + e.KeyChar);
                     if (peso < 0)
@@ -259,10 +261,10 @@ namespace GrupoDePoblacion
         private void txt_altura_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = false;
-            Boolean punto = txt_altura.Text.Contains(",");
-            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & !punto) | txt_altura.Text + e.KeyChar != ",")
+            Boolean punto = ! txt_altura.Text.Contains(",");
+            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & punto))
             {
-                if (txt_altura.Text != "" & e.KeyChar !='\b')
+                if (txt_altura.Text != "" & e.KeyChar !='\b' & txt_altura.Text + e.KeyChar != ",")
                 {
                     double altura = double.Parse(txt_altura.Text + e.KeyChar);
                     if (altura < 0)
@@ -289,9 +291,13 @@ namespace GrupoDePoblacion
 
         private void btn_atras_Click_1(object sender, EventArgs e)
         {
+            if (actualizacion)
+            {
+                nombre = null;
+                apellido = null;
+            }
             Close();
         }
-
 
         /// <summary>
         /// Hace una verificacion en busca de variables vacias y las inicializa
@@ -358,7 +364,7 @@ namespace GrupoDePoblacion
 
         private void txt_nombre_Leave_1(object sender, EventArgs e)
         {
-            if (txt_nombre.TextLength < 3)
+            if (txt_nombre.TextLength < 3 & txt_nombre.Text != "")
             {
                 MessageBox.Show("minimo deben haber 3 caracteres");
                 txt_nombre.Focus();
@@ -373,9 +379,9 @@ namespace GrupoDePoblacion
 
         private void txt_apellido_Leave_1(object sender, EventArgs e)
         {
-            if (txt_apellido.TextLength < 8)
+            if (txt_apellido.TextLength < 4 & txt_apellido.Text != "")
             {
-                MessageBox.Show("Minimo deben haber 8 caracteres.");
+                MessageBox.Show("Minimo deben haber 4 caracteres.");
                 txt_apellido.Focus();
             }
         }
@@ -427,12 +433,12 @@ namespace GrupoDePoblacion
                     rb_femenino.Checked = true;
                 }
             }
-            
         }
 
         private void MostrarMenu()
         {
-            MessageBox.Show("Bienveni@... este es el menu entre comillas jajaja");
+            Menu Menu = new Menu(usuario);
+            Menu.ShowDialog();
         }
 
         private string[] CargarDatos()

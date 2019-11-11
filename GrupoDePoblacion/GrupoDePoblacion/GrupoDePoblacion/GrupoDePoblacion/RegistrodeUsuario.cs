@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GrupoDePoblacion
+namespace PowerFit
 {
     public partial class RegistrodeUsuario : Form
     {
@@ -41,9 +41,9 @@ namespace GrupoDePoblacion
             usuario = txt_usuario.Text;
             contrasena = txt_contrasena1.Text;
             correo = txt_correo.Text;
-            if (txt_usuario.Text == "" | txt_correo.Text =="" | 
+            if (txt_usuario.Text == "" | txt_correo.Text == "" |
                 txt_contrasena1.Text == "" | txt_contrasena2.Text == "")
-            {                
+            {
                 contador++;
                 if (contador == 3)
                 {
@@ -64,20 +64,13 @@ namespace GrupoDePoblacion
             else
             {
                 if (CargarRegistrodeDatos())
+                {
                     CrearNuevoUsuario();
+                    Close();
+                }
                 else
-                    MessageBox.Show("registro fallido, profavor intente más tarde.");                
-                //RegistraNuevoUsuario();
-                Close();
-            }            
-        }
-
-        private void RegistraNuevoUsuario()
-        {            
-            if (CargarRegistrodeDatos())
-                CrearNuevoUsuario();
-            else
-                MessageBox.Show("registro fallido, profavor intente más tarde.");
+                    MessageBox.Show("registro fallido");
+            }
         }
 
 
@@ -88,15 +81,15 @@ namespace GrupoDePoblacion
         private Boolean CargarRegistrodeDatos()//muestra la segunda ventana
         {
             Hide();
-            RegistrodeDatos RegistrarDatos = new RegistrodeDatos(usuario,false);
+            RegistrodeDatos RegistrarDatos = new RegistrodeDatos(usuario, false);
             RegistrarDatos.ShowDialog();
             //if (!RegistrarDatos.salir)//
             //{
-                nombre = RegistrarDatos.ObtenerNombre();
-                apellido = RegistrarDatos.ObtenerApellido();
-                RegistrarDatos.Close();
-                Show();
-                return !(nombre == null || apellido == null);
+            nombre = RegistrarDatos.ObtenerNombre();
+            apellido = RegistrarDatos.ObtenerApellido();
+            RegistrarDatos.Close();
+            Show();
+            return !(nombre == null || apellido == null);
             //}
             //return false;
         }
@@ -132,61 +125,99 @@ namespace GrupoDePoblacion
         private void txt_correo_KeyPress(object sender, KeyPressEventArgs e)
         {
             Boolean correo = txt_correo.Text.Contains("@");
-            if (txt_correo.TextLength > 25)
+            if (txt_correo.TextLength > 35 & e.KeyChar != '\b')
             {
-                MessageBox.Show("maximo 25 caracteres");
+                MessageBox.Show("maximo 35 caracteres");
                 e.Handled = true;
-            }            
-            else if (e.KeyChar=='@' && correo)
+            }
+            else if (e.KeyChar == '@' && correo)
             {
                 MessageBox.Show("Solo se puede usar un '@'");
                 e.Handled = true;
             }
         }
 
+        private void txt_usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((txt_usuario.Text + e.KeyChar).Length > 20 & e.KeyChar != '\b')
+            {
+                MessageBox.Show("El usuario no puede ser mayor a 20 caracteres.");
+                e.Handled = true;
+            }
+        }
+
+        private void txt_contrasena2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((txt_contrasena2.Text + e.KeyChar).Length > 15 & e.KeyChar != '\b')
+            {
+                MessageBox.Show("La contraseña no puede ser mayor a 15 caracteres.");
+                e.Handled = true;
+            }
+        }
+        private void txt_contrasena1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((txt_contrasena1.Text + e.KeyChar).Length > 15 & e.KeyChar != '\b')
+            {
+                MessageBox.Show("La contraseña no puede ser mayor a 15 caracteres.");
+                e.Handled = true;
+            }
+        }
+
         private void txt_correo_Leave(object sender, EventArgs e)
         {
-            correo = null;
-            if (txt_correo.TextLength != 0 && txt_correo.TextLength <= 25)
-                correo = txt_correo.Text;
-            else 
+            if (txt_correo.Text != "")
             {
-                if (!txt_correo.Text.Contains("@") & txt_correo.TextLength != 0)
-                    MessageBox.Show("Debe ingresar porlomenos un '@'");
-                else if (txt_correo.TextLength < 8 & txt_correo.TextLength != 0)
+                if (!txt_correo.Text.Contains("@"))
                 {
-                    MessageBox.Show("");
+                    MessageBox.Show("Debe ingresar porlomenos un '@'");
+                    txt_correo.Focus();
                 }
-                else if (txt_correo.TextLength > 25)
-                    MessageBox.Show("El correo no debe ser mayor a 25 caracteres");
-                txt_correo.Focus();
+                else if (txt_correo.TextLength < 4)
+                {
+                    MessageBox.Show("El correo no debe ser menora a 4 caracteres");
+                    txt_correo.Focus();
+                }
             }
         }
 
         private void txt_usuario_Leave(object sender, EventArgs e)
         {
-            usuario = "";
-            if (txt_usuario.TextLength != 0 && txt_usuario.TextLength <= 25)
-            { 
-                if (ValidarexistenciadeUsuario())
+            if (txt_usuario.TextLength != 0)
+            {
+                if (txt_usuario.TextLength < 5)
+                {
+                    MessageBox.Show("El usuario no puede ser menor a 5 caracteres");
+                    txt_usuario.Focus();
+                }
+                else if (ValidarexistenciadeUsuario())
                 {
                     MessageBox.Show("Usuario " + txt_usuario.Text + " ya existe");
                     txt_usuario.Focus();
                 }
-                else
-                    usuario = txt_usuario.Text;
-            }
-            else
-            {
-                if (txt_usuario.Text.Length > 25)
-                    MessageBox.Show("El usuario debe contener menos de 25 caracteres");
             }
         }
 
-        private void btn_pregunta_Click(object sender, EventArgs e)
+        private void txt_contrasena1_Leave(object sender, EventArgs e)
         {
-            MessageBox.Show(""
-                , "Instrucciones", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            if (txt_contrasena1.TextLength < 8 & txt_contrasena1.Text != "")
+            {
+                MessageBox.Show("La contraseña debe ser mayor a 8 caracteres");
+                txt_contrasena1.Focus();
+            }
+        }
+
+        private void txt_contrasena2_Leave(object sender, EventArgs e)
+        {
+            if (txt_contrasena2.TextLength < 8 & txt_contrasena2.Text != "")
+            {
+                MessageBox.Show("La contraseña debe ser mayor a 8 caracteres");
+                txt_contrasena2.Focus();
+            }
+            else if (txt_contrasena1.Text != txt_contrasena2.Text)
+            {
+                MessageBox.Show("Contraseñas no coinciden");
+                txt_contrasena1.Focus();
+            }
         }
 
         private void btn_pregunta_Click_1(object sender, EventArgs e)
@@ -195,20 +226,6 @@ namespace GrupoDePoblacion
                 , "Instrucciones", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
-        private void txt_contrasena2_Leave(object sender, EventArgs e)
-        {
-            contrasena = null;
-            if (txt_contrasena1.Text == txt_contrasena2.Text)
-                contrasena = txt_contrasena1.Text;
-            else
-            {
-                if (txt_contrasena1.Text != txt_contrasena2.Text)
-                    MessageBox.Show("Contraseñas no coinciden");
-                else if (txt_contrasena1.TextLength > 20 || txt_contrasena2.TextLength > 20)
-                    MessageBox.Show("La contraseña debe ser menor a 20 caracteres");
-                txt_contrasena1.Focus();
-            }
-        }
 
 
         /// <summary>

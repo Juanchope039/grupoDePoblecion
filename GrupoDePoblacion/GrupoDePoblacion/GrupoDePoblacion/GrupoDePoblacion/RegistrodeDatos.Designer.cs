@@ -1,4 +1,4 @@
-﻿namespace GrupoDePoblacion
+﻿namespace PowerFit
 {
     partial class RegistrodeDatos
     {
@@ -198,7 +198,7 @@
             this.btn_pregunta.Location = new System.Drawing.Point(11, 128);
             this.btn_pregunta.Name = "btn_pregunta";
             this.btn_pregunta.Size = new System.Drawing.Size(25, 25);
-            this.btn_pregunta.TabIndex = 19;
+            this.btn_pregunta.TabIndex = 13;
             this.btn_pregunta.UseVisualStyleBackColor = false;
             this.btn_pregunta.Click += new System.EventHandler(this.btn_pregunta_Click);
             // 
@@ -360,7 +360,7 @@
             this.btn_salir.Location = new System.Drawing.Point(12, 190);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(90, 26);
-            this.btn_salir.TabIndex = 13;
+            this.btn_salir.TabIndex = 5;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
             this.btn_salir.Visible = false;
@@ -373,10 +373,9 @@
             this.btn_atras.Location = new System.Drawing.Point(212, 190);
             this.btn_atras.Name = "btn_atras";
             this.btn_atras.Size = new System.Drawing.Size(90, 26);
-            this.btn_atras.TabIndex = 14;
+            this.btn_atras.TabIndex = 4;
             this.btn_atras.Text = "Atras";
             this.btn_atras.UseVisualStyleBackColor = true;
-            this.btn_atras.Visible = false;
             this.btn_atras.Click += new System.EventHandler(this.btn_atras_Click_1);
             // 
             // RegistrodeDatos
@@ -384,7 +383,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BackgroundImage = global::PowerFit.Properties.Resources.descarga__4_;
+            this.BackgroundImage = global::PowerFit.Properties.Resources.Textura;
             this.ClientSize = new System.Drawing.Size(717, 223);
             this.ControlBox = false;
             this.Controls.Add(this.btn_atras);

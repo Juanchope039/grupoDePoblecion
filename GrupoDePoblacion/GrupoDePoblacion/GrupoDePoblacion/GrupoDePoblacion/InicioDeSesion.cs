@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
-namespace GrupoDePoblacion
+namespace PowerFit
 {
     public partial class InicioDeSesion : Form
     {
@@ -97,7 +97,7 @@ namespace GrupoDePoblacion
                     contador=0;
 
                     //Abrir Formulario Actual
-                    Show();
+                    Close();
                 }
                 else if (!validar && contador > 3)
                 {
@@ -180,11 +180,18 @@ namespace GrupoDePoblacion
                 RegistrodeDatos RegistrodeDatos = new RegistrodeDatos(usuario,true);
                 if (RegistrodeDatos.fecha.ToString().Contains(DateTime.Now.ToString("d/MM/yyyy")))
                 {
-                    MessageBox.Show("Bienveni@... este es el menu entre comillas jajaja");
+                    Menu menu = new Menu(usuario);
+                    menu.ShowDialog();
+                    menu.Close();
                 }
                 else
                 {
                     RegistrodeDatos.ShowDialog();
+                    if (RegistrodeDatos.salir)
+                    {
+                        RegistrodeDatos.Close();
+                        Close();
+                    }
                 }            
 
                 //Cerrar Formulario siguiente

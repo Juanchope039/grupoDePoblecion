@@ -1,4 +1,4 @@
-﻿namespace GrupoDePoblacion
+﻿namespace PowerFit
 {
     partial class RegistrodeUsuario
     {
@@ -59,6 +59,7 @@
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(100, 20);
             this.txt_usuario.TabIndex = 1;
+            this.txt_usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_usuario_KeyPress);
             this.txt_usuario.Leave += new System.EventHandler(this.txt_usuario_Leave);
             // 
             // txt_correo
@@ -87,6 +88,8 @@
             this.txt_contrasena1.Size = new System.Drawing.Size(100, 20);
             this.txt_contrasena1.TabIndex = 5;
             this.txt_contrasena1.UseSystemPasswordChar = true;
+            this.txt_contrasena1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_contrasena1_KeyPress);
+            this.txt_contrasena1.Leave += new System.EventHandler(this.txt_contrasena1_Leave);
             // 
             // label3
             // 
@@ -105,6 +108,7 @@
             this.txt_contrasena2.TabIndex = 7;
             this.txt_contrasena2.Tag = "la contraseña debe ser la misma en ambos casos";
             this.txt_contrasena2.UseSystemPasswordChar = true;
+            this.txt_contrasena2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_contrasena2_KeyPress);
             this.txt_contrasena2.Leave += new System.EventHandler(this.txt_contrasena2_Leave);
             // 
             // label4
@@ -172,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PowerFit.Properties.Resources.descarga__1_;
+            this.BackgroundImage = global::PowerFit.Properties.Resources.Panoramica_Gym;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(455, 105);
             this.ControlBox = false;
