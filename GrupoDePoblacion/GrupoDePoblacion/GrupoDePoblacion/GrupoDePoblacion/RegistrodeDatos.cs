@@ -15,12 +15,6 @@ namespace PowerFit
         Boolean actualizacion = false;
         public Boolean salir = false;
 
-        public RegistrodeDatos()
-        {
-            InitializeComponent();
-            test();
-        }
-
         public RegistrodeDatos(string usuario, Boolean actualizacion)
         {
             this.usuario = usuario;
@@ -75,7 +69,7 @@ namespace PowerFit
                     Close();
                 }                    
                 leciones = txt_leciones.Text;
-                grupoSanguineo = txt_grupoSanguineo.Text;
+                grupoSanguineo = cb_grupoSanguineo.Text;
                 enfermedades = txt_enfermedades.Text;
                 discapacidades = txt_discapacidades.Text;
 
@@ -103,7 +97,8 @@ namespace PowerFit
             if (txt_nombre.TextLength==0 | txt_apellido.TextLength == 0
                 | txt_edad.TextLength == 0 | txt_peso.TextLength == 0
                 | txt_altura.TextLength == 0 | txt_leciones.TextLength == 0
-                | txt_grupoSanguineo.TextLength == 0 | txt_enfermedades.TextLength == 0
+                | txt_peso.Text == "0,0" | txt_altura.Text == "0,0"
+                | cb_grupoSanguineo.SelectedIndex == 0 | txt_enfermedades.TextLength == 0
                 | txt_discapacidades.TextLength == 0 | !(rb_masculino.Checked
                 | rb_femenino.Checked))
             {
@@ -168,7 +163,6 @@ namespace PowerFit
         private void CargarAutoCompletado()
         {
             txt_leciones.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.Lecciones);
-            txt_grupoSanguineo.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.GrupoSanguineo);
             txt_enfermedades.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.Enfermedades);
             txt_discapacidades.AutoCompleteCustomSource = Autocompletar(PowerFit.Properties.Settings.Default.Discapacidades);
         }
@@ -194,7 +188,7 @@ namespace PowerFit
             txt_peso.Clear();
             txt_altura.Clear();
             txt_leciones.Clear();
-            txt_grupoSanguineo.Clear();
+            cb_grupoSanguineo.SelectedIndex = 0;
             txt_enfermedades.Clear();
             txt_discapacidades.Clear();
         }
@@ -233,7 +227,7 @@ namespace PowerFit
             Boolean punto = ! txt_peso.Text.Contains(",");//controlar mas de dos caracteres despues del punto
             if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & punto))
             {
-                if (txt_peso.Text != "" && e.KeyChar != '\b' & txt_peso.Text + e.KeyChar != ",")
+                if ((txt_peso.Text != "" | txt_peso.Text != "0,0") && e.KeyChar != '\b' & txt_peso.Text + e.KeyChar != ",")
                 {
                     double peso= double.Parse(txt_peso.Text + e.KeyChar);
                     if (peso < 0)
@@ -246,10 +240,7 @@ namespace PowerFit
                         MessageBox.Show("Ha exedido el peso permitido (250) por la aplicación.");
                         e.Handled = true;
                     }
-                    else
-                        e.Handled = false;
                 }
-                
             }
             else
             {
@@ -260,26 +251,23 @@ namespace PowerFit
 
         private void txt_altura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = false;
-            Boolean punto = ! txt_altura.Text.Contains(",");
-            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar) | (e.KeyChar == ',' & punto))
+            if (Char.IsDigit(e.KeyChar) | Char.IsControl(e.KeyChar))
             {
-                if (txt_altura.Text != "" & e.KeyChar !='\b' & txt_altura.Text + e.KeyChar != ",")
+                if ((txt_altura.Text != "" | txt_altura.Text != "0") & e.KeyChar !='\b')
                 {
                     double altura = double.Parse(txt_altura.Text + e.KeyChar);
                     if (altura < 0)
                     {
                         MessageBox.Show("La altura no puede ser negativo.");
                         e.Handled = true;
-                    }else if (altura > 3)
-                    {
-                        MessageBox.Show("La altura no puede superar los 3 metros");
-                    }
+                    }else if (altura > 300)
+                        MessageBox.Show("La altura no puede superar los 3 metros (300cm)");
                 }
+                e.Handled = false;
             }
             else
             {
-                MessageBox.Show("no se aceptan digitos no numericos y solo una coma");
+                MessageBox.Show("no se aceptan digitos no numericos");
                 e.Handled = true;
             }
         }
@@ -377,6 +365,30 @@ namespace PowerFit
                 , "Instrucciones", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
+        private void txt_peso_Leave(object sender, EventArgs e)
+        {
+            if ((txt_peso.Text != "" | txt_peso.Text != "0,0"))
+            {
+                if (double.Parse(txt_peso.Text) < 35)
+                {
+                    MessageBox.Show("El peso no puede ser menor a 35Kg");
+                    txt_peso.Focus();
+                }
+            }
+        }
+
+        private void txt_altura_Leave(object sender, EventArgs e)
+        {
+            if (txt_altura.Text != "")
+            {
+                if (int.Parse(txt_altura.Text) < 120)
+                {
+                    MessageBox.Show("La altura no puede ser menor a 120cm");
+                    txt_peso.Focus();
+                }
+            }
+        }
+
         private void txt_apellido_Leave_1(object sender, EventArgs e)
         {
             if (txt_apellido.TextLength < 4 & txt_apellido.Text != "")
@@ -398,6 +410,8 @@ namespace PowerFit
             // Desabilita las cajas de texto para que no puedan ser modificadas
             txt_nombre.Enabled = false;
             txt_apellido.Enabled = false;
+            txt_edad.Enabled = false;
+            cb_grupoSanguineo.Enabled = false;
             rb_masculino.Enabled = false;
             rb_femenino.Enabled = false;
 
@@ -421,7 +435,7 @@ namespace PowerFit
                 txt_peso.Text = peso.ToString();
                 txt_altura.Text = altura.ToString();
                 txt_leciones.Text = leciones;
-                txt_grupoSanguineo.Text = grupoSanguineo;
+                cb_grupoSanguineo.Text = grupoSanguineo;
                 txt_enfermedades.Text = enfermedades;
                 txt_discapacidades.Text = discapacidades;
                 if (genero == 'M')
@@ -518,7 +532,7 @@ namespace PowerFit
             Boolean salida = false;
 
             // Direccion de la Base de Datos
-            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);

@@ -237,7 +237,7 @@ namespace PowerFit
             Boolean salida = false;
 
             // Direccion de la Base de Datos
-            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -246,9 +246,9 @@ namespace PowerFit
             Conexion.Open();
 
             // crear la consulta (Query)
-            String ConsultaQuery = 
-                " INSERT INTO `Usuarios` (`usuario`, `contrasena`, `nombre`, `apellido`)" +
-                " VALUES (@usuario, @contraseña, @nombre, @apellido)";//*/
+            String ConsultaQuery =
+                " INSERT INTO `Usuarios` (`usuario`, `contrasena`, `nombre`, `apellido`, `correo`)" +
+                " VALUES (@usuario, @contraseña, @nombre, @apellido, @correo)";//*/
 
             // crear un objecto comando para efectuar la consulta
             OleDbCommand Comando = new OleDbCommand(ConsultaQuery, Conexion);
@@ -258,8 +258,9 @@ namespace PowerFit
             Comando.Parameters.AddWithValue("@contrasena", contrasena);
             Comando.Parameters.AddWithValue("@nombre", nombre);
             Comando.Parameters.AddWithValue("@apellido", apellido);
+            Comando.Parameters.AddWithValue("@correo", correo);
 
-            //
+            //verificacion de fallos y correcto funcionamiemto
             switch (Comando.ExecuteNonQuery())
             {
                 case 0:

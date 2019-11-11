@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-CO</TargetCulture>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -107,8 +107,12 @@
   <PropertyGroup>
     <ApplicationIcon>PowerFit.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -126,6 +130,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presentacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion.Designer.cs">
+      <DependentUpon>Presentacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +177,9 @@
     <Compile Include="VerInforme.Designer.cs">
       <DependentUpon>VerInforme.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Presentacion.resx">
+      <DependentUpon>Presentacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +216,7 @@
     <None Include="ClientesDataSet.xss">
       <DependentUpon>ClientesDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -222,6 +236,8 @@
     <Content Include="Clientes.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\descargas3.jpg" />
+    <None Include="Resources\descarga1.jpg" />
     <None Include="Resources\descarga %284%29.jpg" />
     <None Include="Resources\images %281%29.jpg" />
     <None Include="Resources\descarga %283%29.jpg" />

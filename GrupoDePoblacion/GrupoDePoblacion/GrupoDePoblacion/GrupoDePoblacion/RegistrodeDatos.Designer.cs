@@ -30,14 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrodeDatos));
             this.btn_Limpiar = new System.Windows.Forms.Button();
-            this.btn_Procesar = new System.Windows.Forms.Button();
+            this.btn_Siguiente = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_peso = new System.Windows.Forms.TextBox();
             this.txt_apellido = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txt_altura = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txt_edad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_pregunta = new System.Windows.Forms.Button();
@@ -46,11 +45,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.txt_edad = new System.Windows.Forms.TextBox();
             this.txt_enfermedades = new System.Windows.Forms.TextBox();
-            this.txt_grupoSanguineo = new System.Windows.Forms.TextBox();
             this.txt_discapacidades = new System.Windows.Forms.TextBox();
             this.txt_leciones = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cb_grupoSanguineo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,37 +74,40 @@
             this.btn_Limpiar.UseVisualStyleBackColor = false;
             this.btn_Limpiar.Click += new System.EventHandler(this.btLimpiar_Click);
             // 
-            // btn_Procesar
+            // btn_Siguiente
             // 
-            this.btn_Procesar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Procesar.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Procesar.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btn_Procesar.Location = new System.Drawing.Point(612, 190);
-            this.btn_Procesar.Name = "btn_Procesar";
-            this.btn_Procesar.Size = new System.Drawing.Size(90, 26);
-            this.btn_Procesar.TabIndex = 2;
-            this.btn_Procesar.Text = "Procesar";
-            this.btn_Procesar.UseVisualStyleBackColor = false;
-            this.btn_Procesar.Click += new System.EventHandler(this.btProcesar_Click);
+            this.btn_Siguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_Siguiente.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Siguiente.Font = new System.Drawing.Font("Nirmala UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.btn_Siguiente.Location = new System.Drawing.Point(612, 190);
+            this.btn_Siguiente.Name = "btn_Siguiente";
+            this.btn_Siguiente.Size = new System.Drawing.Size(90, 26);
+            this.btn_Siguiente.TabIndex = 2;
+            this.btn_Siguiente.Text = "Siguiente";
+            this.btn_Siguiente.UseVisualStyleBackColor = false;
+            this.btn_Siguiente.Click += new System.EventHandler(this.btProcesar_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(239, 32);
+            this.label8.Location = new System.Drawing.Point(236, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 17);
+            this.label8.Size = new System.Drawing.Size(71, 17);
             this.label8.TabIndex = 6;
-            this.label8.Text = "Peso: ";
+            this.label8.Text = "Peso(Kg): ";
             // 
             // txt_peso
             // 
             this.txt_peso.BackColor = System.Drawing.Color.White;
+            this.txt_peso.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_peso.Location = new System.Drawing.Point(314, 28);
             this.txt_peso.Name = "txt_peso";
             this.txt_peso.Size = new System.Drawing.Size(121, 25);
             this.txt_peso.TabIndex = 7;
+            this.txt_peso.Text = "0,0";
             this.txt_peso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_peso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_peso_KeyPress);
+            this.txt_peso.Leave += new System.EventHandler(this.txt_peso_Leave);
             // 
             // txt_apellido
             // 
@@ -129,12 +132,15 @@
             // txt_altura
             // 
             this.txt_altura.BackColor = System.Drawing.Color.White;
+            this.txt_altura.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_altura.Location = new System.Drawing.Point(314, 61);
             this.txt_altura.Name = "txt_altura";
             this.txt_altura.Size = new System.Drawing.Size(121, 25);
             this.txt_altura.TabIndex = 9;
+            this.txt_altura.Text = "0";
             this.txt_altura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_altura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_altura_KeyPress);
+            this.txt_altura.Leave += new System.EventHandler(this.txt_altura_Leave);
             // 
             // label10
             // 
@@ -144,16 +150,6 @@
             this.label10.Size = new System.Drawing.Size(42, 17);
             this.label10.TabIndex = 4;
             this.label10.Text = "Edad:";
-            // 
-            // txt_edad
-            // 
-            this.txt_edad.BackColor = System.Drawing.Color.White;
-            this.txt_edad.Location = new System.Drawing.Point(88, 96);
-            this.txt_edad.Name = "txt_edad";
-            this.txt_edad.Size = new System.Drawing.Size(121, 25);
-            this.txt_edad.TabIndex = 5;
-            this.txt_edad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_edad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_edad_KeyPress);
             // 
             // label1
             // 
@@ -236,11 +232,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(234, 65);
+            this.label2.Location = new System.Drawing.Point(229, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 17);
+            this.label2.Size = new System.Drawing.Size(82, 17);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Altura: ";
+            this.label2.Text = "Altura(cm): ";
             // 
             // txt_nombre
             // 
@@ -253,36 +249,35 @@
             this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombre_KeyPress);
             this.txt_nombre.Leave += new System.EventHandler(this.txt_nombre_Leave_1);
             // 
+            // txt_edad
+            // 
+            this.txt_edad.BackColor = System.Drawing.Color.White;
+            this.txt_edad.Location = new System.Drawing.Point(88, 96);
+            this.txt_edad.Name = "txt_edad";
+            this.txt_edad.Size = new System.Drawing.Size(121, 25);
+            this.txt_edad.TabIndex = 5;
+            this.txt_edad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_edad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_edad_KeyPress);
+            // 
             // txt_enfermedades
             // 
             this.txt_enfermedades.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_enfermedades.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txt_enfermedades.BackColor = System.Drawing.Color.White;
-            this.txt_enfermedades.Location = new System.Drawing.Point(121, 97);
+            this.txt_enfermedades.Location = new System.Drawing.Point(121, 96);
             this.txt_enfermedades.Name = "txt_enfermedades";
-            this.txt_enfermedades.Size = new System.Drawing.Size(101, 22);
+            this.txt_enfermedades.Size = new System.Drawing.Size(102, 22);
             this.txt_enfermedades.TabIndex = 5;
             this.txt_enfermedades.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txt_grupoSanguineo
-            // 
-            this.txt_grupoSanguineo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txt_grupoSanguineo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_grupoSanguineo.BackColor = System.Drawing.Color.White;
-            this.txt_grupoSanguineo.Location = new System.Drawing.Point(121, 63);
-            this.txt_grupoSanguineo.Name = "txt_grupoSanguineo";
-            this.txt_grupoSanguineo.Size = new System.Drawing.Size(101, 22);
-            this.txt_grupoSanguineo.TabIndex = 3;
-            this.txt_grupoSanguineo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_discapacidades
             // 
             this.txt_discapacidades.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_discapacidades.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txt_discapacidades.BackColor = System.Drawing.Color.White;
-            this.txt_discapacidades.Location = new System.Drawing.Point(121, 131);
+            this.txt_discapacidades.Location = new System.Drawing.Point(121, 130);
             this.txt_discapacidades.Name = "txt_discapacidades";
-            this.txt_discapacidades.Size = new System.Drawing.Size(101, 22);
+            this.txt_discapacidades.Size = new System.Drawing.Size(102, 22);
             this.txt_discapacidades.TabIndex = 7;
             this.txt_discapacidades.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -293,20 +288,20 @@
             this.txt_leciones.BackColor = System.Drawing.Color.White;
             this.txt_leciones.Location = new System.Drawing.Point(121, 29);
             this.txt_leciones.Name = "txt_leciones";
-            this.txt_leciones.Size = new System.Drawing.Size(101, 22);
+            this.txt_leciones.Size = new System.Drawing.Size(102, 22);
             this.txt_leciones.TabIndex = 1;
             this.txt_leciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Silver;
+            this.groupBox3.Controls.Add(this.cb_grupoSanguineo);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txt_leciones);
             this.groupBox3.Controls.Add(this.txt_discapacidades);
-            this.groupBox3.Controls.Add(this.txt_grupoSanguineo);
             this.groupBox3.Controls.Add(this.txt_enfermedades);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Font = new System.Drawing.Font("Nirmala UI", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -317,6 +312,24 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Informe Medico";
+            // 
+            // cb_grupoSanguineo
+            // 
+            this.cb_grupoSanguineo.FormattingEnabled = true;
+            this.cb_grupoSanguineo.Items.AddRange(new object[] {
+            "Seleccione su tipo de sangre Porfavor",
+            "A+",
+            "A-",
+            "B+",
+            "B-",
+            "O+",
+            "O-",
+            "AB+",
+            "AB-"});
+            this.cb_grupoSanguineo.Location = new System.Drawing.Point(120, 63);
+            this.cb_grupoSanguineo.Name = "cb_grupoSanguineo";
+            this.cb_grupoSanguineo.Size = new System.Drawing.Size(102, 21);
+            this.cb_grupoSanguineo.TabIndex = 8;
             // 
             // label6
             // 
@@ -391,12 +404,12 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_Limpiar);
-            this.Controls.Add(this.btn_Procesar);
+            this.Controls.Add(this.btn_Siguiente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrodeDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "                                                                                 " +
-    "                    Registro de datos";
+    "                 Registro diario de datos";
             this.Load += new System.EventHandler(this.AgregarUsuario_load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -409,18 +422,16 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Limpiar;
-        private System.Windows.Forms.Button btn_Procesar;
+        private System.Windows.Forms.Button btn_Siguiente;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_peso;
         private System.Windows.Forms.TextBox txt_apellido;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txt_altura;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_edad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txt_enfermedades;
-        private System.Windows.Forms.TextBox txt_grupoSanguineo;
         private System.Windows.Forms.TextBox txt_discapacidades;
         private System.Windows.Forms.TextBox txt_leciones;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -436,6 +447,8 @@
         private System.Windows.Forms.Button btn_atras;
         private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.Button btn_pregunta;
+        private System.Windows.Forms.TextBox txt_edad;
+        private System.Windows.Forms.ComboBox cb_grupoSanguineo;
     }
 }
 

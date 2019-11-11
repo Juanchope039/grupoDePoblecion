@@ -47,15 +47,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(14, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario: ";
+            this.label1.Text = "Nombre usuario: ";
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Location = new System.Drawing.Point(66, 9);
+            this.txt_usuario.Location = new System.Drawing.Point(109, 9);
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(100, 20);
             this.txt_usuario.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // txt_correo
             // 
-            this.txt_correo.Location = new System.Drawing.Point(66, 35);
+            this.txt_correo.Location = new System.Drawing.Point(109, 35);
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.Size = new System.Drawing.Size(100, 20);
             this.txt_correo.TabIndex = 3;
@@ -75,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 39);
+            this.label2.Location = new System.Drawing.Point(35, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 2;
@@ -83,7 +83,7 @@
             // 
             // txt_contrasena1
             // 
-            this.txt_contrasena1.Location = new System.Drawing.Point(320, 9);
+            this.txt_contrasena1.Location = new System.Drawing.Point(363, 9);
             this.txt_contrasena1.Name = "txt_contrasena1";
             this.txt_contrasena1.Size = new System.Drawing.Size(100, 20);
             this.txt_contrasena1.TabIndex = 5;
@@ -94,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(221, 13);
+            this.label3.Location = new System.Drawing.Point(264, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             // txt_contrasena2
             // 
-            this.txt_contrasena2.Location = new System.Drawing.Point(320, 35);
+            this.txt_contrasena2.Location = new System.Drawing.Point(363, 35);
             this.txt_contrasena2.Name = "txt_contrasena2";
             this.txt_contrasena2.Size = new System.Drawing.Size(100, 20);
             this.txt_contrasena2.TabIndex = 7;
@@ -114,7 +114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(198, 39);
+            this.label4.Location = new System.Drawing.Point(241, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 13);
             this.label4.TabIndex = 6;
@@ -122,7 +122,7 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(12, 73);
+            this.btn_salir.Location = new System.Drawing.Point(26, 73);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(75, 23);
             this.btn_salir.TabIndex = 11;
@@ -132,7 +132,7 @@
             // 
             // btn_limpiar
             // 
-            this.btn_limpiar.Location = new System.Drawing.Point(130, 73);
+            this.btn_limpiar.Location = new System.Drawing.Point(156, 73);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(75, 23);
             this.btn_limpiar.TabIndex = 10;
@@ -142,7 +142,7 @@
             // 
             // btn_atras
             // 
-            this.btn_atras.Location = new System.Drawing.Point(248, 73);
+            this.btn_atras.Location = new System.Drawing.Point(286, 73);
             this.btn_atras.Name = "btn_atras";
             this.btn_atras.Size = new System.Drawing.Size(75, 23);
             this.btn_atras.TabIndex = 9;
@@ -152,7 +152,7 @@
             // 
             // btn_siguiente
             // 
-            this.btn_siguiente.Location = new System.Drawing.Point(366, 73);
+            this.btn_siguiente.Location = new System.Drawing.Point(416, 73);
             this.btn_siguiente.Name = "btn_siguiente";
             this.btn_siguiente.Size = new System.Drawing.Size(75, 23);
             this.btn_siguiente.TabIndex = 8;
@@ -165,7 +165,7 @@
             this.btn_pregunta.BackColor = System.Drawing.Color.Transparent;
             this.btn_pregunta.BackgroundImage = global::PowerFit.Properties.Resources.pregunta;
             this.btn_pregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_pregunta.Location = new System.Drawing.Point(426, 4);
+            this.btn_pregunta.Location = new System.Drawing.Point(469, 4);
             this.btn_pregunta.Name = "btn_pregunta";
             this.btn_pregunta.Size = new System.Drawing.Size(25, 25);
             this.btn_pregunta.TabIndex = 19;
@@ -178,7 +178,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PowerFit.Properties.Resources.Panoramica_Gym;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(455, 105);
+            this.ClientSize = new System.Drawing.Size(505, 105);
             this.ControlBox = false;
             this.Controls.Add(this.btn_pregunta);
             this.Controls.Add(this.btn_siguiente);

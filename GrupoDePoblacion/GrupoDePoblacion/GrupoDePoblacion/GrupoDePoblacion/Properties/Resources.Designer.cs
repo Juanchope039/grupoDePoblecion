@@ -63,6 +63,16 @@ namespace PowerFit.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap descargas3 {
+            get {
+                object obj = ResourceManager.GetObject("descargas3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Panoramica_Gym {
             get {
                 object obj = ResourceManager.GetObject("Panoramica Gym", resourceCulture);
