@@ -134,6 +134,7 @@ namespace PowerFit
 
         private double CalcularIMC(double peso, double altura)
         {
+            altura = altura / 100;
             string imc = (peso / (altura * altura)).ToString();
             return double.Parse(imc.Substring(0,imc.IndexOf(',')+2));
         }
@@ -488,7 +489,7 @@ namespace PowerFit
             // Vamos a ejecutar la c¿Consulta por medio del objecto comando
             LectordeDatos = Comando.ExecuteReader();
 
-            SalidadeDatos = new string[LectordeDatos.FieldCount];
+            SalidadeDatos = new string[LectordeDatos.FieldCount]; 
 
             // Validamos Si existen existas en esta consulta
             if (LectordeDatos.HasRows)
@@ -498,7 +499,6 @@ namespace PowerFit
                 {
                     SalidadeDatos[i] = LectordeDatos[i].ToString();
                 }
-                SalidadeDatos[10]= "                ";
                 do
                 {
                     if (LectordeDatos[10].ToString().Contains(DateTime.Now.ToString("d/MM/yyyy")))

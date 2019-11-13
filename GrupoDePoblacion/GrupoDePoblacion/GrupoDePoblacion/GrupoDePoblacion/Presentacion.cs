@@ -106,7 +106,7 @@ namespace PowerFit
         {
             InicioDeSesion inicioDeSesion = new InicioDeSesion();
             Hide();
-            inicioDeSesion.Show();
+            inicioDeSesion.ShowDialog();
         }
     }
 }

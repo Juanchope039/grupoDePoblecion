@@ -18,3 +18,4 @@ D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\Grup
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.TrustInfo.xml
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.exe.manifest
 D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.application
+D:\ASUS\Documents\GitHub\grupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\GrupoDePoblacion\obj\x64\Debug\PowerFit.Fondo.resources

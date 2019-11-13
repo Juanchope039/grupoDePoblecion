@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <TargetCulture>es-CO</TargetCulture>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -111,8 +111,9 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -130,6 +131,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fondo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fondo.Designer.cs">
+      <DependentUpon>Fondo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +184,9 @@
     <Compile Include="VerInforme.Designer.cs">
       <DependentUpon>VerInforme.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Fondo.resx">
+      <DependentUpon>Fondo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion.resx">
       <DependentUpon>Presentacion.cs</DependentUpon>
     </EmbeddedResource>

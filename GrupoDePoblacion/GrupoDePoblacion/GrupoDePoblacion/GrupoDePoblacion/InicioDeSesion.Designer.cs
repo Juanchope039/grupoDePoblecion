@@ -92,6 +92,7 @@
             this.txt_contrasena.Size = new System.Drawing.Size(100, 20);
             this.txt_contrasena.TabIndex = 13;
             this.txt_contrasena.UseSystemPasswordChar = true;
+            this.txt_contrasena.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_contrasena_KeyPress);
             // 
             // label3
             // 
@@ -109,6 +110,7 @@
             this.txt_usuario.Size = new System.Drawing.Size(100, 20);
             this.txt_usuario.TabIndex = 11;
             this.txt_usuario.Tag = "Ingrese nombre de usuario";
+            this.txt_usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_usuario_KeyPress);
             // 
             // label2
             // 

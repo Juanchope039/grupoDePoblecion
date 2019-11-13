@@ -124,22 +124,33 @@ namespace PowerFit
         }
         private void txt_correo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Boolean correo = txt_correo.Text.Contains("@");
-            if (txt_correo.TextLength > 35 & e.KeyChar != '\b')
+            if (e.KeyChar == ' ')
             {
-                MessageBox.Show("maximo 35 caracteres");
                 e.Handled = true;
             }
-            else if (e.KeyChar == '@' && correo)
+            else
             {
-                MessageBox.Show("Solo se puede usar un '@'");
-                e.Handled = true;
+                Boolean correo = txt_correo.Text.Contains("@");
+                if (txt_correo.TextLength > 35 & e.KeyChar != '\b')
+                {
+                    MessageBox.Show("maximo 35 caracteres");
+                    e.Handled = true;
+                }
+                else if (e.KeyChar == '@' && correo)
+                {
+                    MessageBox.Show("Solo se puede usar un '@'");
+                    e.Handled = true;
+                }
             }
         }
 
         private void txt_usuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((txt_usuario.Text + e.KeyChar).Length > 20 & e.KeyChar != '\b')
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+            else if ((txt_usuario.Text + e.KeyChar).Length > 20 & e.KeyChar != '\b')
             {
                 MessageBox.Show("El usuario no puede ser mayor a 20 caracteres.");
                 e.Handled = true;

@@ -134,7 +134,7 @@ namespace PowerFit
         private Boolean ValidarUsuario(string usuario, string contrasena)
         {
             // Direccion de la Base de Datos
-            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);
@@ -227,6 +227,22 @@ namespace PowerFit
         {
             MessageBox.Show("-Porfavor ingrese su nombre de usuario y contraseña, para iniciar seción. si no tiene un usuario porfavor de clic en 'Registrarse'."
                 ,"Instrucciones",MessageBoxButtons.OK,MessageBoxIcon.Question);
+        }
+
+        private void txt_usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_contrasena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

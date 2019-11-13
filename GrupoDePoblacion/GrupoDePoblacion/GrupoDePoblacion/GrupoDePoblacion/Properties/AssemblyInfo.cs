@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("PowerFit")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Esta app te permite llevar un seguimiento de tu estado fisico, con el cual podrás ver un informe detallado con estadisticas sobre tu salud fisica, además  podrás ver consejos de rutinas y alimentación para que puedas llevar una vida sana.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("PowerFit")]
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión 
 // mediante el carácter '*', como se muestra a continuación:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.9")]
+[assembly: AssemblyFileVersion("1.0.0.9")]
 [assembly: NeutralResourcesLanguage("es-CO")]
