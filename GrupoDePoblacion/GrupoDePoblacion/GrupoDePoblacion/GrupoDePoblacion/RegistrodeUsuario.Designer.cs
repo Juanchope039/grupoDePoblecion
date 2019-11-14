@@ -47,26 +47,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 13);
+            this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(98, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre usuario: ";
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Location = new System.Drawing.Point(109, 9);
+            this.txt_usuario.Location = new System.Drawing.Point(127, 11);
+            this.txt_usuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(100, 20);
+            this.txt_usuario.Size = new System.Drawing.Size(116, 20);
             this.txt_usuario.TabIndex = 1;
             this.txt_usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_usuario_KeyPress);
             this.txt_usuario.Leave += new System.EventHandler(this.txt_usuario_Leave);
             // 
             // txt_correo
             // 
-            this.txt_correo.Location = new System.Drawing.Point(109, 35);
+            this.txt_correo.Location = new System.Drawing.Point(127, 43);
+            this.txt_correo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_correo.Name = "txt_correo";
-            this.txt_correo.Size = new System.Drawing.Size(100, 20);
+            this.txt_correo.Size = new System.Drawing.Size(116, 20);
             this.txt_correo.TabIndex = 3;
             this.txt_correo.Tag = "El correo debe contener un @";
             this.txt_correo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_correo_KeyPress);
@@ -75,17 +77,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 39);
+            this.label2.Location = new System.Drawing.Point(41, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Correo: ";
             // 
             // txt_contrasena1
             // 
-            this.txt_contrasena1.Location = new System.Drawing.Point(363, 9);
+            this.txt_contrasena1.Location = new System.Drawing.Point(423, 11);
+            this.txt_contrasena1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_contrasena1.Name = "txt_contrasena1";
-            this.txt_contrasena1.Size = new System.Drawing.Size(100, 20);
+            this.txt_contrasena1.Size = new System.Drawing.Size(116, 20);
             this.txt_contrasena1.TabIndex = 5;
             this.txt_contrasena1.UseSystemPasswordChar = true;
             this.txt_contrasena1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_contrasena1_KeyPress);
@@ -94,17 +97,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(264, 13);
+            this.label3.Location = new System.Drawing.Point(308, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.Size = new System.Drawing.Size(77, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Contraseña: ";
             // 
             // txt_contrasena2
             // 
-            this.txt_contrasena2.Location = new System.Drawing.Point(363, 35);
+            this.txt_contrasena2.Location = new System.Drawing.Point(423, 43);
+            this.txt_contrasena2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_contrasena2.Name = "txt_contrasena2";
-            this.txt_contrasena2.Size = new System.Drawing.Size(100, 20);
+            this.txt_contrasena2.Size = new System.Drawing.Size(116, 20);
             this.txt_contrasena2.TabIndex = 7;
             this.txt_contrasena2.Tag = "la contraseña debe ser la misma en ambos casos";
             this.txt_contrasena2.UseSystemPasswordChar = true;
@@ -114,17 +118,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(241, 39);
+            this.label4.Location = new System.Drawing.Point(281, 48);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 13);
+            this.label4.Size = new System.Drawing.Size(134, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Confirmar contraseña: ";
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(26, 73);
+            this.btn_salir.Location = new System.Drawing.Point(30, 80);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(75, 23);
+            this.btn_salir.Size = new System.Drawing.Size(87, 28);
             this.btn_salir.TabIndex = 11;
             this.btn_salir.Text = "Salir";
             this.btn_salir.UseVisualStyleBackColor = true;
@@ -132,9 +137,10 @@
             // 
             // btn_limpiar
             // 
-            this.btn_limpiar.Location = new System.Drawing.Point(156, 73);
+            this.btn_limpiar.Location = new System.Drawing.Point(182, 80);
+            this.btn_limpiar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_limpiar.Name = "btn_limpiar";
-            this.btn_limpiar.Size = new System.Drawing.Size(75, 23);
+            this.btn_limpiar.Size = new System.Drawing.Size(87, 28);
             this.btn_limpiar.TabIndex = 10;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = true;
@@ -142,9 +148,10 @@
             // 
             // btn_atras
             // 
-            this.btn_atras.Location = new System.Drawing.Point(286, 73);
+            this.btn_atras.Location = new System.Drawing.Point(334, 80);
+            this.btn_atras.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_atras.Name = "btn_atras";
-            this.btn_atras.Size = new System.Drawing.Size(75, 23);
+            this.btn_atras.Size = new System.Drawing.Size(87, 28);
             this.btn_atras.TabIndex = 9;
             this.btn_atras.Text = "Atras";
             this.btn_atras.UseVisualStyleBackColor = true;
@@ -152,9 +159,10 @@
             // 
             // btn_siguiente
             // 
-            this.btn_siguiente.Location = new System.Drawing.Point(416, 73);
+            this.btn_siguiente.Location = new System.Drawing.Point(485, 80);
+            this.btn_siguiente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_siguiente.Name = "btn_siguiente";
-            this.btn_siguiente.Size = new System.Drawing.Size(75, 23);
+            this.btn_siguiente.Size = new System.Drawing.Size(87, 28);
             this.btn_siguiente.TabIndex = 8;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = true;
@@ -165,20 +173,20 @@
             this.btn_pregunta.BackColor = System.Drawing.Color.Transparent;
             this.btn_pregunta.BackgroundImage = global::PowerFit.Properties.Resources.pregunta;
             this.btn_pregunta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_pregunta.Location = new System.Drawing.Point(469, 4);
+            this.btn_pregunta.Location = new System.Drawing.Point(547, 5);
+            this.btn_pregunta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_pregunta.Name = "btn_pregunta";
-            this.btn_pregunta.Size = new System.Drawing.Size(25, 25);
+            this.btn_pregunta.Size = new System.Drawing.Size(29, 31);
             this.btn_pregunta.TabIndex = 19;
             this.btn_pregunta.UseVisualStyleBackColor = false;
             this.btn_pregunta.Click += new System.EventHandler(this.btn_pregunta_Click_1);
             // 
             // RegistrodeUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PowerFit.Properties.Resources.Panoramica_Gym;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(505, 105);
+            this.ClientSize = new System.Drawing.Size(589, 119);
             this.ControlBox = false;
             this.Controls.Add(this.btn_pregunta);
             this.Controls.Add(this.btn_siguiente);
@@ -193,10 +201,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_usuario);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RegistrodeUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "                                                 Registro de Usuario";
+            this.Text = "                                                                                 " +
+    " Registro de Usuario";
             this.ResumeLayout(false);
             this.PerformLayout();
 

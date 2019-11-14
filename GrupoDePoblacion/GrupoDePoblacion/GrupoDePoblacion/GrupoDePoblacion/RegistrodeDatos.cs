@@ -17,6 +17,7 @@ namespace PowerFit
 
         public RegistrodeDatos(string usuario, Boolean actualizacion)
         {
+            this.SetDesktopLocation(600, 200);
             this.usuario = usuario;
             this.actualizacion = actualizacion;
             InitializeComponent();
@@ -462,7 +463,7 @@ namespace PowerFit
             string[] SalidadeDatos;
 
             // Direccion de la Base de Datos
-            string CadenaDeConexion = PowerFit.Properties.Settings.Default.ClientesConnectionString;
+            string CadenaDeConexion = Properties.Settings.Default.ClientesConnectionString;
 
             // crear una conexion con la base de datos
             OleDbConnection Conexion = new OleDbConnection(CadenaDeConexion);

@@ -63,9 +63,69 @@ namespace PowerFit.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _9uil {
+            get {
+                object obj = ResourceManager.GetObject("9uil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap descargas3 {
             get {
                 object obj = ResourceManager.GetObject("descargas3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dfghj {
+            get {
+                object obj = ResourceManager.GetObject("dfghj", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fghnjm_ {
+            get {
+                object obj = ResourceManager.GetObject("fghnjm,", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fitness_gym_center_logo_with_neon_light_effect_vector_illustration_png_199585 {
+            get {
+                object obj = ResourceManager.GetObject("fitness-gym-center-logo-with-neon-light-effect-vector-illustration-png_199585", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondo {
+            get {
+                object obj = ResourceManager.GetObject("fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logotipo_fitness_gimnasio_7888_2 {
+            get {
+                object obj = ResourceManager.GetObject("logotipo-fitness-gimnasio_7888-2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -18,6 +18,7 @@ namespace PowerFit
         int contador = 0;
         public RegistrodeUsuario()
         {
+            this.SetDesktopLocation(600, 200);
             InitializeComponent();
         }
 

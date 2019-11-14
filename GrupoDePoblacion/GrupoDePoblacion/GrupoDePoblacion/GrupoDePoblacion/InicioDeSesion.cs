@@ -18,6 +18,7 @@ namespace PowerFit
         string usuario = null;
         public InicioDeSesion()
         {
+            this.SetDesktopLocation(700, 200);
             InitializeComponent();
         }
 
@@ -243,6 +244,11 @@ namespace PowerFit
             {
                 e.Handled = true;
             }
+        }
+
+        private void InicioDeSesion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

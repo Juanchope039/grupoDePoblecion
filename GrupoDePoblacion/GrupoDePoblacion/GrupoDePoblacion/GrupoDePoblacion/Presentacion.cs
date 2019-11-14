@@ -13,6 +13,7 @@ namespace PowerFit
     {
         public Presentacion()
         {
+            this.SetDesktopLocation(700, 200);
             InitializeComponent();
             this.Text = String.Format("Acerca de {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
@@ -107,6 +108,11 @@ namespace PowerFit
             InicioDeSesion inicioDeSesion = new InicioDeSesion();
             Hide();
             inicioDeSesion.ShowDialog();
+        }
+
+        private void Presentacion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -37,10 +37,11 @@
             // 
             // btn_verInforme
             // 
-            this.btn_verInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_verInforme.Location = new System.Drawing.Point(12, 12);
+            this.btn_verInforme.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_verInforme.Location = new System.Drawing.Point(14, 15);
+            this.btn_verInforme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_verInforme.Name = "btn_verInforme";
-            this.btn_verInforme.Size = new System.Drawing.Size(133, 54);
+            this.btn_verInforme.Size = new System.Drawing.Size(155, 66);
             this.btn_verInforme.TabIndex = 0;
             this.btn_verInforme.Text = "Ver Informe";
             this.btn_verInforme.UseVisualStyleBackColor = true;
@@ -48,10 +49,11 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(461, 12);
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(538, 15);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 54);
+            this.button2.Size = new System.Drawing.Size(155, 66);
             this.button2.TabIndex = 1;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = true;
@@ -59,10 +61,11 @@
             // 
             // btn_recomendacionesAlimenticias
             // 
-            this.btn_recomendacionesAlimenticias.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_recomendacionesAlimenticias.Location = new System.Drawing.Point(161, 12);
+            this.btn_recomendacionesAlimenticias.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_recomendacionesAlimenticias.Location = new System.Drawing.Point(188, 15);
+            this.btn_recomendacionesAlimenticias.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_recomendacionesAlimenticias.Name = "btn_recomendacionesAlimenticias";
-            this.btn_recomendacionesAlimenticias.Size = new System.Drawing.Size(133, 54);
+            this.btn_recomendacionesAlimenticias.Size = new System.Drawing.Size(155, 66);
             this.btn_recomendacionesAlimenticias.TabIndex = 2;
             this.btn_recomendacionesAlimenticias.Text = "Recomendaciones alimenticias";
             this.btn_recomendacionesAlimenticias.UseVisualStyleBackColor = true;
@@ -70,10 +73,11 @@
             // 
             // btn_recomendacionesRutinas
             // 
-            this.btn_recomendacionesRutinas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_recomendacionesRutinas.Location = new System.Drawing.Point(312, 12);
+            this.btn_recomendacionesRutinas.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_recomendacionesRutinas.Location = new System.Drawing.Point(364, 15);
+            this.btn_recomendacionesRutinas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_recomendacionesRutinas.Name = "btn_recomendacionesRutinas";
-            this.btn_recomendacionesRutinas.Size = new System.Drawing.Size(133, 54);
+            this.btn_recomendacionesRutinas.Size = new System.Drawing.Size(155, 66);
             this.btn_recomendacionesRutinas.TabIndex = 3;
             this.btn_recomendacionesRutinas.Text = "Recomendaciones de rutina";
             this.btn_recomendacionesRutinas.UseVisualStyleBackColor = true;
@@ -81,20 +85,22 @@
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PowerFit.Properties.Resources.Textura;
-            this.ClientSize = new System.Drawing.Size(610, 78);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(712, 96);
             this.ControlBox = false;
             this.Controls.Add(this.btn_recomendacionesRutinas);
             this.Controls.Add(this.btn_recomendacionesAlimenticias);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_verInforme);
+            this.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Menu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "                                                                                 " +
-    "              Menu";
+    "                               Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
 
